@@ -1,0 +1,31 @@
+﻿17.1.14
+- tog bort Recipt taben som hade råkats komma med i releasen
+
+17.1.13
+- Android: loading syns nu för varje tab, förutom profile.
+- iOS: ändrat texten "accepts" till "accept" för "create member".
+
+17.1.12
+- Android: Flyttat över request mot more, news och offer från inloggning till Id-tab
+
+
+17.1.10
+- ändrat om så att Offer validityDate blir korrekt
+
+
+17.1.8
+– Android: Ändrat om appname från "Joyces.Android" till "Joyces".
+– iOS: bug fix: more-fliken laddades inte in korrekt.
+- ios: ändrad deploment target från 9.0 till 9.5
+
+
+17.1.5
+– fixat till så att appen inte crashar om offer ger httpstatus 500
+– Lagt till hanteringen för "invalid_token"
+– Från och med nu kommer Vismas startard versionsnumrering att följas. Denna version blir då 17.1.5
+– Fixa till så att DeviceToken skickas utan mellanslag till Relevate
+– Fixat till så att meddelande syns EFTER utloggning så att man inte automatiskt "loggas" in.
+– Fixade till så att News sorteras efter startDate.
+– La till RefreshToken, nu kontrolleras ifall det finns en valid AccessToken, har den gått ut
+  hämtas en ny AccessToken medhjälp av refreshToken.
+– 

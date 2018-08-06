@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="110dp"
+    android:background="#ffffff">
+    <TextView
+        android:text="12 Euro (5€ off) Beer and Coke and some ass ioshfsidiuhisdf sdfigsdiud"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewHeadline"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp"
+        android:textSize="17dp"
+        android:textColor="#000000"
+        android:layout_gravity="left"
+        android:lines="1"
+        android:singleLine="true" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+            <TextView
+                android:text="5 EUR"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewValue"
+                android:paddingBottom="5dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:textSize="17dp"
+                android:textColor="#306c39"
+                android:textStyle="bold"
+                android:layout_gravity="left" />
+            <TextView
+                android:text="Note"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewNote"
+                android:paddingBottom="5dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:textSize="17dp"
+                android:textColor="#000000"
+                android:layout_gravity="left"
+                android:lines="1"
+                android:singleLine="true" />
+            <TextView
+                android:text="Valid until XXXX-XX-XX XX:XX"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textViewValidDateTime"
+                android:paddingBottom="5dp"
+                android:paddingLeft="18dp"
+                android:paddingRight="18dp"
+                android:textSize="14dp"
+                android:textColor="#cccccc"
+                android:layout_gravity="left" />
+        </LinearLayout>
+        <FFImageLoading.Views.ImageViewAsync
+            android:layout_height="70dp"
+            android:layout_width="140dp"
+            android:id="@+id/imageViewOffer"
+            android:layout_marginBottom="8.0dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:src="@drawable/Placeholder"
+            android:layout_gravity="right" />
+    </LinearLayout>
+    <!--<View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="#ffffff" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#cccccc" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="10dp"
+        android:background="#ffffff" />-->
+</LinearLayout>

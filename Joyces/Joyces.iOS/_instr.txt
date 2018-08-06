@@ -1,0 +1,58 @@
+﻿Development:	com.informationfactory.abalon
+Production:		joyces.joycesupermarket.ie
+
+
+1. Release -> iPhone -> Device
+2. Öppna Entitlements.plist som XML och sätt om till "production" //development
+3. Gå till properites för iOS projektet -> iOS IPA Options
+4. Gå till properites för iOS projektet -> iOS Bundle Signing
+5. Välj distribution och ett lämplig provisionay profile
+6. Build
+7. Tools -> iOS -> Show IPA file on Build Server
+
+
+OM man du får felmeddelandet: 
+Could not load Info.plist: Could not find file "..../Info.plist"
+
+Gör en clean och försök igen. Det borde fungera nu!
+
+
+
+får man unknown error -1 ffffffff är det troligtvis en omstart på macen, och funkar
+inte det, revoka certet och ladda ner den på nytt.
+
+
+För release på informationfactory.nu
+sätt "production" i Entitlements.plist
+använd com.informationfactory.abalon i info.plist
+signing identity - iPhone Dsitribution : information factory
+proviosioning profile - Abalon InHouse3
+
+för realease på appstore 
+sätt "production" i Entitlements.plist
+använd joyces.joycesupermarket.ie i info.plist
+signing identity - iPhone Dsitribution :Abalon AB
+proviosioning profile - Dsitr Abalon2019
+
+för debug
+sätt "development" i Entitlements.plist
+använd joyces.joycesupermarket.ie i info.plist
+signing identity - iPhone Developer :Joakim Axelsson (C33PFV7P7)
+proviosioning profile - JoakimAbalonDev
+
+
+För att publicera en app på appstore (apple)
+Skapa först en ny version på itunes connect
+bygg en ny release
+Öppna xcode på macen - xcode - open developer tool - application loader
+
+Gå på windows (visual studio) Tools - ios - show ipa file on build server (då öppnas en mapp med filen på macen )
+ladda upp på itunes connect med application loader och peka ut den filen (ovan)
+Välj sedan den filen att distribuera på itunes connect
+
+för att byta appikon i info.plist
+	<key>XSAppIconAssets</key>
+	<string>Resources/Images.xcassets/Joyces.appiconset</string>
+
+
+	abalon.paradiset.se

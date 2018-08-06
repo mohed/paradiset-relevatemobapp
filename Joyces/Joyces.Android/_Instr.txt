@@ -1,0 +1,7 @@
+﻿1. Build i Release mode
+2. Högerklicka Archive
+3. Distribute
+4. Ad hoc
+5. Välj nyckel, finns ingen tryck  på + för att skapa en
+6. Save as
+7.lösen för cert som är skapad i 5, Startskottet2002

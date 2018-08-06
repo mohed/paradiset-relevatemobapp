@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e3e1db">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:background="@android:color/white">
+    <!--<ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="match_parent"
+        android:layout_height="189.0dp"
+        android:id="@+id/imageViewNews2"
+        android:layout_marginBottom="8.0dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="20dp" />-->
+        <FFImageLoading.Views.ImageViewAsync
+            android:layout_width="match_parent"
+            android:layout_height="189.0dp"
+            android:id="@+id/imageViewNews2"
+            android:layout_marginBottom="8.0dp"
+            android:paddingBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/Placeholder" />
+        <TextView
+            android:text="Large Text"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewHeadline2"
+            android:paddingBottom="5dp"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:textSize="17dp"
+            android:textColor="#000000"
+            android:textStyle="bold" />
+        <TextView
+            android:text="Small Text"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textViewDescription2"
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:textSize="14dp"
+            android:textColor="#929292" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="10dp"
+            android:background="#ffffff" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#cccccc" />
+    </LinearLayout>
+</ScrollView>

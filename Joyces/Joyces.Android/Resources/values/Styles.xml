@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<resources>
+  <style name="CheckBoxCustomStyle" parent="@android:style/Widget.CompoundButton.CheckBox">
+    <item name="android:textColor">#800080</item>
+    <item name="android:layout_margin">3dp</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:paddingRight">15dp</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_width">wrap_content</item>
+  </style>
+
+  <!-- the theme applied to the application or activity -->
+  <style name="CustomActionBarTheme" parent="@android:Theme.Holo.Light">
+    <item name="android:actionBarStyle">@style/MyActionBar</item>
+    <!--<item name="android:actionBarTabTextStyle">@style/custom_tabViewStyle</item>-->
+    <item name="android:actionBarTabStyle">@style/custom_actionBarTabStyle</item>
+    <item name="android:actionBarTabBarStyle">@style/custom_actionBarTabBarStyle</item>
+    <item name="android:logo">@android:color/transparent</item>
+    <item name="android:homeAsUpIndicator">@drawable/backArrow</item>
+  </style>
+
+ 
+  <!-- ActionBar styles -->
+  <style name="MyActionBar" parent="@android:Widget.Holo.Light.ActionBar.Solid.Inverse">
+    <!--<item name="android:background">#5daa30</item>-->
+  </style>
+
+  <!-- Style actual tabs -->
+  <style name="custom_actionBarTabStyle" parent="@android:Widget.Holo.Light.ActionBar.TabView">
+    <item name="android:background">#ffffff</item>
+    <item name="android:textColor">#000000</item>
+    <item name="android:textAllCaps">false</item>
+    <item name="android:showDividers">none</item>
+    <item name="android:measureWithLargestChild">true</item>
+    <item name="android:paddingLeft">0dp</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:minWidth">0dp</item>
+  </style>
+
+  <!-- Style actonBar area under tabs -->
+  <style name="custom_actionBarTabBarStyle" parent="@android:Widget.Holo.ActionBar.TabView">
+    <item name="android:showDividers">none</item>
+    <item name="android:paddingLeft">0dp</item>
+    <item name="android:paddingRight">0dp</item>
+    <item name="android:minWidth">0dp</item>
+    <item name="android:background">#5daa30</item>
+  </style>
+
+  <!-- Style action bar tab text and color color selector -->
+  <style name="custom_tabViewStyle" parent="android:Widget.Holo.Light.ActionBar.TabView">
+    <item name="android:textColor">#cccccc</item>
+    <item name="android:background">#999999</item>
+  </style>
+
+
+  <!-- the theme applied to the application or activity -->
+  <style name="SplashScreen" parent="@android:Theme">
+    <item name="android:windowBackground">@drawable/logo</item>
+    <item name="android:windowActionBar">false</item>  
+  </style>
+</resources>
