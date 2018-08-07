@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
 using Android.App;
 using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-using System.Threading.Tasks;
-using Android.Gms.Common;
-using Joyces.Droid.Model;
 using Android.Net;
-using System.Collections.Generic;
-using Newtonsoft.Json;
+using Android.Gms.Common;
 using Android.Graphics;
+
+using Joyces.Droid.Model;
+
+using Newtonsoft.Json;
+
 
 namespace Joyces.Droid
 {
@@ -89,8 +93,6 @@ namespace Joyces.Droid
         {
             // This prevents a user from being able to hit the back button and leave the login page.
             return;
-
-            //base.OnBackPressed();
         }
 
         async protected override void OnCreate(Bundle bundle)
@@ -100,10 +102,6 @@ namespace Joyces.Droid
                 base.OnCreate(bundle);
 
                 RequestWindowFeature(WindowFeatures.NoTitle);
-
-                // Kontrollera så att användaren har en aktiv internetanslutning
-                // CheckConnection();
-
                 Platform.PlatformAndroid.InitAPIs(this);
 
                 AndroidSettings.SetGeneralSetting();
@@ -121,68 +119,20 @@ namespace Joyces.Droid
                 if (GeneralSettings.AutoLogin && !string.IsNullOrEmpty(Joyces.Helpers.Settings.AccessToken) && !string.IsNullOrEmpty(sUserEmail))
                 {
                     var t = Task.Run(async () => await LoadApp());
-
-                    //Kontrollerar om användaren redan har loggat in en gång 
-                    //NOTERA! tokens giltigthetstiden kan ha gått ut... ta hand om det på ID-sidan 
-                    //(förstasidan som syns)
-
-                    //progress.Show();
-
-                    //Joyces.Platform.AppContext.Instance.Platform.CustomerId = sUserEmail;
-
-                    //var getCustomer = await RestAPI.GetCustomer(sUserEmail, Helpers.Settings.AccessToken);
-
-                    //if (getCustomer != null && getCustomer is Customer)
-                    //{
-                    //    Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
-
-                    //    var resp = await RestAPI.GetOffer(sUserEmail, Helpers.Settings.AccessToken);
-
-                    //    if (resp != null && resp is List<Offer>)
-                    //        Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
-                    //    else
-                    //        Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
-
-                    //    resp = await RestAPI.GetNews(sUserEmail, Helpers.Settings.AccessToken);
-
-                    //    if (resp != null && resp is List<News>)
-                    //        Joyces.Platform.AppContext.Instance.Platform.NewsList = (List<News>)resp;
-                    //    else
-                    //        Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
-
-                    //    Joyces.Platform.AppContext.Instance.Platform.MoreList = await RestAPI.GetMore(Helpers.Settings.AccessToken);
-
-
-                    //    var t = Task.Run(async () => await LoadApp());
-                    //}
-                    //else
-                    //{
-                    //    Helpers.Settings.AccessToken = string.Empty;
-                    //    Helpers.Settings.UserEmail = string.Empty;
-
-                    //    ShowLoginView();
-                    //}
-
-                    //progress.Hide();
                 }
                 else
                 {
                     ShowLoginView();
                 }
-
             }
             catch (Exception ex)
             {
                 SetContentView(Resource.Layout.Main);
                 buttonwMainViewVersion.Text = buttonwMainViewVersion.Text + "_err";
-
                 setCurrentClientTheme();
             }
         }
-        //protected override void AttachBaseContext(Context newBase)
-        //{
-        //    base.AttachBaseContext(CalligraphyContextWrapper.Wrap(newBase));
-        //}
+        
         private void ShowLoginView()
         {
             SetContentView(Resource.Layout.MainParadiset);
@@ -192,11 +142,12 @@ namespace Joyces.Droid
             forgotButton = FindViewById<Button>(Resource.Id.ForgotButton);
 
             buttonwMainViewVersion = FindViewById<Button>(Resource.Id.buttonwMainViewVersion);
-#if DEBUG
-            buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion() + "_dev";
-#else
-                    buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion();
-#endif
+            
+            #if DEBUG
+                buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion() + "_dev";
+            #else
+                buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion();
+            #endif
 
             //Anropar GCM Service
             if (IsPlayServicesAvailable())
@@ -256,9 +207,6 @@ namespace Joyces.Droid
             }
             else
             {
-#if DEBUG
-                //Alert("Message","Google Play Services is available.", "OK");
-#endif
                 return true;
             }
         }
