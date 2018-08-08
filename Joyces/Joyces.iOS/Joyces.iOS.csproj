@@ -56,9 +56,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Distribution: Information Factory AB</CodesignKey>
+    <CodesignKey>iPhone Developer: Mohamed Haidar (PSCT373P9F)</CodesignKey>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>Abalon InHouse3</CodesignProvision>
+    <CodesignProvision>VS: joyces.joycesupermarket.ie Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -82,13 +82,16 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignEntitlements>
+    </CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Developer: Joakim Axelsson (C339PFV7P7)</CodesignKey>
+    <CodesignKey>iPhone Developer: Mohamed Haidar (PSCT373P9F)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>JoakimAbalonDev</CodesignProvision>
+    <CodesignProvision>VS: joyces.joycesupermarket.ie Development</CodesignProvision>
     <BuildIpa>false</BuildIpa>
     <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
+    <CodesignExtraArgs />
+    <CodesignResourceRules />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FFImageLoading, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">

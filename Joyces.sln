@@ -66,19 +66,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C2C21DA-00C3-4799-BA8D-3D7154F7EA01}
 	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 4
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://59grader.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Joyces\\Joyces.Android\\Joyces.Android.csproj
-		SccProjectName1 = Joyces/Joyces.Android
-		SccLocalPath1 = Joyces\\Joyces.Android
-		SccProjectUniqueName2 = Joyces\\Joyces.iOS\\Joyces.iOS.csproj
-		SccProjectName2 = Joyces/Joyces.iOS
-		SccLocalPath2 = Joyces\\Joyces.iOS
-		SccProjectUniqueName3 = Joyces\\Joyces\\Joyces.csproj
-		SccProjectName3 = Joyces/Joyces
-		SccLocalPath3 = Joyces\\Joyces
-	EndGlobalSection
 EndGlobal
