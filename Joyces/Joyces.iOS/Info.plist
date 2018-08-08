@@ -65,6 +65,6 @@
 		<string>Montserrat-Regular.ttf</string>
 	</array>
 	<key>XSAppIconAssets</key>
-	<string>Resources/Images.xcassets/AppIcons.appiconset</string>
+  <string>Resources/Images.xcassets/AppIcons.appiconset</string>
 </dict>
 </plist>
