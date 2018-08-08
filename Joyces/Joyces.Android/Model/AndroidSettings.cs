@@ -6,8 +6,8 @@
         {
             Joyces.Platform.AppContext.Instance.Platform.WebServiceURL = "https://testparadiset.abalonrelevate.se/api/v1/";
 
-            Joyces.Platform.AppContext.Instance.Platform.WebServiceUserName = "mohedrest";
-            Joyces.Platform.AppContext.Instance.Platform.WebServicePassWord = "stockholm";
+            Joyces.Platform.AppContext.Instance.Platform.WebServiceUserName = "vismawsu";
+            Joyces.Platform.AppContext.Instance.Platform.WebServicePassWord = "vismawsu";
             Joyces.Platform.AppContext.Instance.Platform.SenderId = "970515158925";
 
             Joyces.Platform.AppContext.Instance.Platform.ClientId = "YrzDAbapWkCOZQ5MC426Taocf2Ma";

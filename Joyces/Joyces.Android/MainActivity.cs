@@ -10,6 +10,7 @@ using Android.OS;
 using Android.Net;
 using Android.Gms.Common;
 using Android.Graphics;
+using Android.Util;
 
 using Joyces.Droid.Model;
 
@@ -27,18 +28,60 @@ namespace Joyces.Droid
         private EditText EmailEditText;
         private EditText PasswordEditText;
         private Button buttonwMainViewVersion;
+        private string tag = "Relapp"; 
 
         ProgressDialog progress;
         Activity activity;
 
         int iSecretButtonClickCounter = 0;
 
+        async protected override void OnCreate(Bundle bundle)
+        {
+            try
+            {
+                Log.Info(tag, "OnCreate initiated");
+                base.OnCreate(bundle);
+
+                RequestWindowFeature(WindowFeatures.NoTitle);
+                Platform.PlatformAndroid.InitAPIs(this);
+
+                AndroidSettings.SetGeneralSetting();
+
+                progress = new ProgressDialog(this);
+                progress.Indeterminate = true;
+                progress.SetProgressStyle(ProgressDialogStyle.Spinner);
+                progress.SetMessage(Lang.LOADING);
+                progress.SetCancelable(false);
+
+                //string sUserToken = Helpers.Settings.AccessToken;
+                string sUserEmail = Joyces.Helpers.Settings.UserEmail;
+
+                //Skicka användaren vidare till inloggatläge
+                if (GeneralSettings.AutoLogin && !string.IsNullOrEmpty(Joyces.Helpers.Settings.AccessToken) && !string.IsNullOrEmpty(sUserEmail))
+                {
+                    var t = Task.Run(async () => await LoadApp());
+                }
+                else
+                {
+                    ShowLoginView();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Warn(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
+                SetContentView(Resource.Layout.Main);
+                buttonwMainViewVersion.Text = buttonwMainViewVersion.Text + "_err";
+                setCurrentClientTheme();
+            }
+        }
+
         private void setCurrentClientTheme()
         {
             try
             {
+                Log.Info(tag, "setCurrentClientTheme initiated");
                 Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
-               
+
 
                 ScrollView mainViewBackground = FindViewById<ScrollView>(Resource.Id.mainViewBackground);
                 mainViewBackground.SetBackgroundColor(Android.Graphics.Color.ParseColor(GeneralSettings.BackgroundColor));
@@ -95,46 +138,9 @@ namespace Joyces.Droid
             return;
         }
 
-        async protected override void OnCreate(Bundle bundle)
-        {
-            try
-            {
-                base.OnCreate(bundle);
-
-                RequestWindowFeature(WindowFeatures.NoTitle);
-                Platform.PlatformAndroid.InitAPIs(this);
-
-                AndroidSettings.SetGeneralSetting();
-
-                progress = new ProgressDialog(this);
-                progress.Indeterminate = true;
-                progress.SetProgressStyle(ProgressDialogStyle.Spinner);
-                progress.SetMessage(Lang.LOADING);
-                progress.SetCancelable(false);
-
-                //string sUserToken = Helpers.Settings.AccessToken;
-                string sUserEmail = Joyces.Helpers.Settings.UserEmail;
-
-                //Skicka användaren vidare till inloggatläge
-                if (GeneralSettings.AutoLogin && !string.IsNullOrEmpty(Joyces.Helpers.Settings.AccessToken) && !string.IsNullOrEmpty(sUserEmail))
-                {
-                    var t = Task.Run(async () => await LoadApp());
-                }
-                else
-                {
-                    ShowLoginView();
-                }
-            }
-            catch (Exception ex)
-            {
-                SetContentView(Resource.Layout.Main);
-                buttonwMainViewVersion.Text = buttonwMainViewVersion.Text + "_err";
-                setCurrentClientTheme();
-            }
-        }
-        
         private void ShowLoginView()
         {
+            Log.Info(tag, "ShowLoginView initiated");
             SetContentView(Resource.Layout.MainParadiset);
 
             loginButton = FindViewById<Button>(Resource.Id.loginButton);
@@ -157,7 +163,6 @@ namespace Joyces.Droid
             }
 
             HandleEvents();
-
             setCurrentClientTheme();
         }
 
@@ -245,10 +250,8 @@ namespace Joyces.Droid
 
         async private void LoginButton_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("Login button clicked");
+            Log.Info(tag, "Login button clicked");
             progress.Show();
-
-            Console.WriteLine("Progress Show exited");
 
             EditText txtEmail = FindViewById<EditText>(Resource.Id.EmailEditText);
             string sUsername = txtEmail.Text;
@@ -277,6 +280,7 @@ namespace Joyces.Droid
                     Alert(Lang.MESSAGE_HEADLINE, Lang.UNEXPECTED_ERROR, Lang.BUTTON_OK);
 
                     progress.Hide();
+                    Log.Info(tag, "Progress show exited");
 
                     return;
                 }
@@ -316,6 +320,7 @@ namespace Joyces.Droid
                     Joyces.Helpers.Settings.UserAccountNo = Joyces.Platform.AppContext.Instance.Platform.CustomerList.accountNumber;
 
                     progress.Hide();
+                    Log.Info(tag, "Progress show exited");
 
                     var t = Task.Run(async () => await LoadApp());
                    
@@ -330,12 +335,14 @@ namespace Joyces.Droid
                     Alert(Lang.ERROR_HEADLINE, localError.message, Lang.BUTTON_OK);
 
                     progress.Hide();
+                    Log.Info(tag, "Progress show exited");
                 }
             }
             else if (tokenModel != null && tokenModel is AbalonErrors)
             {
                 //Hit kommer den om ett fel returneras från Abalon
                 progress.Hide();
+                Log.Info(tag, "Progress show exited");
 
                 Joyces.Helpers.Settings.AccessToken = string.Empty;
                 Joyces.Helpers.Settings.UserEmail = string.Empty;
@@ -349,6 +356,7 @@ namespace Joyces.Droid
             {
                 //Vid all sorts exception kommer den hit och visar UNEXPECTED_ERROR! 
                 progress.Hide();
+                Log.Info(tag, "Progress show exited");
 
                 Joyces.Helpers.Settings.AccessToken = string.Empty;
                 Joyces.Helpers.Settings.UserEmail = string.Empty;
@@ -415,9 +423,9 @@ namespace Joyces.Droid
                 StartActivity(intent);
 
             }
-            catch (Exception exc)
+            catch (Exception ex)
             {
-
+                Log.Warn(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
             }
         }
 
