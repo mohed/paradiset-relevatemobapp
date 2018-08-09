@@ -16,23 +16,20 @@ using System.Threading.Tasks;
 using Joyces.Droid.Model;
 using Android.Graphics.Drawables;
 using System.Threading;
-using Android.Graphics;
-using Android.Text;
-using Calligraphy;
-
-
 
 namespace Joyces.Droid
 {
 
     //[Activity(Label = "Joyces", Theme = "@style/CustomActionBarTheme")]
-    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme" ,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme")]
     public class TabMenuActivity : Activity
     {
         string sCustomerId = Joyces.Platform.AppContext.Instance.Platform.CustomerId;
 
         bool bIsUpdating = false;
+        ActionBar actionBar;
         ProgressDialog progress;
+
 
         private Button btnUpdate;
         private Button btnLogout;
@@ -45,7 +42,7 @@ namespace Joyces.Droid
             sUserAccountNumber = Joyces.Helpers.Settings.UserAccountNo;
 
             base.OnCreate(savedInstanceState);
-
+            actionBar = base.ActionBar;
             progress = new ProgressDialog(this);
             progress.Indeterminate = true;
             progress.SetProgressStyle(ProgressDialogStyle.Spinner);
@@ -66,65 +63,7 @@ namespace Joyces.Droid
 
             if (!string.IsNullOrEmpty(sDeviceToken))
                 SendRegistrationToAppServer(sDeviceToken);
-           // SetActionbarFont();
         }
-        //TESTA FONT
-        String ExternalFontPath;
-        Typeface FontLoaderTypeface;
-        private void SetActionbarFont()
-        {
-            try
-            {
-                //CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
-                //        .setDefaultFontPath(Joyces.Helpers.Settings.MainFont)
-                //        .build());
-
-                // "fonts/Roboto-RobotoRegular.ttf"
-                try
-                {
-                    Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
-
-                    SpannableString st = new SpannableString(Lang.APPLICATION_NAME);
-                                                                          //st.SetSpan(new TypefaceSpan(this, "Signika-Regular.otf"), 0, st.Length(), SpanTypes.ExclusiveExclusive);
-                                                                          //string errorMessage = "God kväll";
-                                                                          //SpannableString wordtoSpan = new SpannableString();
-                                                                          //wordtoSpan.SetSpan(new ForegroundColorSpan(new Color(255, 124, 67, 149)), 34, errorMessage.Length, SpanTypes.ExclusiveExclusive);
-
-
-
-
-                    st.SetSpan(tf, 0, st.Length(), SpanTypes.ExclusiveExclusive);
-
-                    ActionBar.TitleFormatted = st;
-                }
-                catch (Exception ee)
-                {
-
-                }
-
-
-                //ActionBar actionBar = ActionBar;
-                //TextView TextViewNewFont = new TextView(this);
-                //ViewGroup.LayoutParams layoutparams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
-                //TextViewNewFont.LayoutParameters = layoutparams;
-                //TextViewNewFont.Text = "Actionbar Title";
-                //TextViewNewFont.SetTextColor(Color.Red);
-                //TextViewNewFont.Gravity = GravityFlags.Center;
-                //TextViewNewFont.SetTextSize(Android.Util.ComplexUnitType.Sp, 27);
-                //ExternalFontPath = "Montserrat-Regulart.ttf";
-
-                //FontLoaderTypeface = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont); //Typeface.CreateFromAsset(Assets, ExternalFontPath);
-                //TextViewNewFont.SetTypeface(FontLoaderTypeface, TypefaceStyle.Normal);
-                //// actionBar.SetCustomView(TextViewNewFont);
-                //ActionBar.SetCustomView(TextViewNewFont, new Android.App.ActionBar.LayoutParams(ViewGroup.LayoutParams.WrapContent, ViewGroup.LayoutParams.WrapContent));
-
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
-
 
         async public void SendRegistrationToAppServer(string sDeviceToken)
         {
@@ -152,30 +91,11 @@ namespace Joyces.Droid
 
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
-            ActionBar.RemoveTabAt(4);
+            actionBar.RemoveTabAt(4);
 
             MenuInflater.Inflate(Resource.Menu.ToolbarMenu, menu);
             return base.OnCreateOptionsMenu(menu);
         }
-
-
-        //private void changeTabsFont()
-        //{
-
-        //    ViewGroup vg = (ViewGroup)tabLayout.getChildAt(0);
-        //    int tabsCount = vg.getChildCount();
-        //    for (int j = 0; j < tabsCount; j++)
-        //    {
-        //        ViewGroup vgTab = (ViewGroup)vg.getChildAt(j);
-        //        int tabChildsCount = vgTab.getChildCount();
-        //        for (int i = 0; i < tabChildsCount; i++)
-        //        {
-        //            View tabViewChild = vgTab.getChildAt(i);
-        //            if (tabViewChild instanceof TextView) {
-        //        ((TextView)tabViewChild).setTypeface(Font.getInstance().getTypeFace(), Typeface.NORMAL);
-        //    }
-        //}
-
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
@@ -199,17 +119,11 @@ namespace Joyces.Droid
 
         private void LoadTabs()
         {
+            ActionBar.Tab tab = actionBar.NewTab();
+            actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
+            actionBar.SetBackgroundDrawable(new ColorDrawable(Android.Graphics.Color.ParseColor(GeneralSettings.AndroidActionBarColor)));
 
-            ActionBar.Tab tab = ActionBar.NewTab();
-            ActionBar.NavigationMode = ActionBarNavigationMode.Tabs;
-            
-            ActionBar.SetBackgroundDrawable(new ColorDrawable(Android.Graphics.Color.ParseColor(GeneralSettings.AndroidActionBarColor)));
-            
-            //tab.SetText("News");
-            tab.SetText("Nyheter");
-
-           
-
+            tab.SetText("News");
             tab.SetIcon(null);
             tab.TabSelected += async (sender, args) =>
             {
@@ -217,10 +131,10 @@ namespace Joyces.Droid
                 SetContentView(Resource.Layout.NewsfeedView);
                 await LoadNewsfeedView();
             };
-            ActionBar.AddTab(tab);
+            actionBar.AddTab(tab);
 
-            tab = ActionBar.NewTab();
-            tab.SetText("Din kod");
+            tab = actionBar.NewTab();
+            tab.SetText("ID");
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -228,10 +142,10 @@ namespace Joyces.Droid
                 SetContentView(Resource.Layout.IdView);
                 LoadIdView();
             };
-            ActionBar.AddTab(tab);
+            actionBar.AddTab(tab);
 
-            tab = ActionBar.NewTab();
-            tab.SetText("Erbjudanden");
+            tab = actionBar.NewTab();
+            tab.SetText("Offers");
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -249,10 +163,10 @@ namespace Joyces.Droid
                 }
 
             };
-            ActionBar.AddTab(tab);
+            actionBar.AddTab(tab);
 
-            tab = ActionBar.NewTab();
-            tab.SetText("Övrigt");
+            tab = actionBar.NewTab();
+            tab.SetText("More");
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -260,10 +174,10 @@ namespace Joyces.Droid
                 SetContentView(Resource.Layout.MoreView);
                 LoadMoreFeed();
             };
-            ActionBar.AddTab(tab);
+            actionBar.AddTab(tab);
 
-            tab = ActionBar.NewTab();
-            tab.SetText("Profil");
+            tab = actionBar.NewTab();
+            tab.SetText("Profile");
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -271,12 +185,12 @@ namespace Joyces.Droid
                 SetContentView(Resource.Layout.ProfileView);
                 loadProfileViewContent(true);
             };
-            ActionBar.AddTab(tab);
+            actionBar.AddTab(tab);
 
-            ActionBar.SetSelectedNavigationItem(1);
-           // SetActionbarFont();
+            actionBar.SetSelectedNavigationItem(1);
+
         }
-        
+
         async private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (!bIsUpdating)
@@ -288,6 +202,30 @@ namespace Joyces.Droid
                 string sFirstName = FindViewById<EditText>(Resource.Id.txtProfileViewFirstName).Text;
                 string sLastName = FindViewById<EditText>(Resource.Id.txtProfileViewLastName).Text;
                 string sMobileNo = FindViewById<EditText>(Resource.Id.txtProfileViewMobileNo).Text;
+
+
+                //CheckBox optInEmail = FindViewById<CheckBox>(Resource.Id.chOptInEmail);
+                //CheckBox optInSms = FindViewById<CheckBox>(Resource.Id.chOptInSms);
+                //CheckBox optInPush = FindViewById<CheckBox>(Resource.Id.chOptInPush);
+
+                //Communicationchoice updatedEmailCommunicationChoice = new Communicationchoice();
+                //Communicationchoice updatedSmsCommunicationChoice = new Communicationchoice();
+                //Communicationchoice updatedPushCommunicationChoice = new Communicationchoice();
+
+                //List<Communicationchoice> updatedCommunicationChoices = new List<Communicationchoice>();
+
+                //updatedEmailCommunicationChoice.choice = optInEmail.Checked;
+                //updatedEmailCommunicationChoice.typeCode = "email";
+                //updatedCommunicationChoices.Add(updatedEmailCommunicationChoice);
+
+                //updatedSmsCommunicationChoice.choice = optInSms.Checked;
+                //updatedSmsCommunicationChoice.typeCode = "sms";
+                //updatedCommunicationChoices.Add(updatedSmsCommunicationChoice);
+
+                //updatedPushCommunicationChoice.choice = optInPush.Checked;
+                //updatedPushCommunicationChoice.typeCode = "push";
+                //updatedCommunicationChoices.Add(updatedPushCommunicationChoice);
+
 
                 string sUserToken = Joyces.Helpers.Settings.AccessToken;
 
@@ -382,75 +320,68 @@ namespace Joyces.Droid
             }
         }
 
-
-        
-
-
         private void loadProfileViewContent(bool reload)
         {
             try
             {
-                
-                var customerList = Joyces.Platform.AppContext.Instance.Platform.CustomerList;
-                Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
 
+                var customerList = Joyces.Platform.AppContext.Instance.Platform.CustomerList;
                 //mbProfileSelected = true;
                 if (customerList != null)
                 {
-                    
-
                     EditText txtProfileViewEmail = FindViewById<EditText>(Resource.Id.txtProfileViewEmail);
                     txtProfileViewEmail.Text = customerList.email;
-                    txtProfileViewEmail.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
 
                     EditText txtProfileViewFirstName = FindViewById<EditText>(Resource.Id.txtProfileViewFirstName);
                     txtProfileViewFirstName.Text = customerList.firstName;
-                    txtProfileViewFirstName.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtProfileViewFirstName.Enabled = false;
 
                     EditText txtProfileViewLastName = FindViewById<EditText>(Resource.Id.txtProfileViewLastName);
                     txtProfileViewLastName.Text = customerList.lastName;
-                    txtProfileViewLastName.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtProfileViewLastName.Enabled = false;
 
                     EditText txtProfileViewMobileNo = FindViewById<EditText>(Resource.Id.txtProfileViewMobileNo);
                     txtProfileViewMobileNo.Text = customerList.mobile;
-                    txtProfileViewMobileNo.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-
-                    TextView txtEmail = FindViewById<TextView>(Resource.Id.textViewProfileViewEmail);
-                    txtEmail.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtEmail.Text = Lang.EMAIL;
-
-                    TextView txtHeader = FindViewById<TextView>(Resource.Id.textViewHeadline);
-                    txtHeader.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtHeader.Text = Lang.ACCOUNT_PERSONAL_DETAILS;
-
-                    TextView txtMobile = FindViewById<TextView>(Resource.Id.textViewProfileViewMobileNo);
-                    txtMobile.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtMobile.Text = Lang.MOBILEPHONE;
-
-                    TextView txtFirstName = FindViewById<TextView>(Resource.Id.textViewProfileViewFirstname);
-                    txtFirstName.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtFirstName.Text = Lang.EDIT_ACCOUNT_FIRSTNAME;
-
-                    TextView txtLastName = FindViewById<TextView>(Resource.Id.textViewProfileViewLastname);
-                    txtLastName.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    txtLastName.Text = Lang.EDIT_ACCOUNT_FIRSTNAME;
 
                     btnUpdate = FindViewById<Button>(Resource.Id.btnProfileViewUpdate);
-                    btnUpdate.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    btnUpdate.Text = Lang.SAVE;
                     btnUpdate.Click += btnUpdate_Click;
 
                     btnLogout = FindViewById<Button>(Resource.Id.btnProfileViewLogout);
-                    btnLogout.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                    btnLogout.Text = Lang.LOGOUT;
                     btnLogout.Click += btnLogout_Click;
 
                     btnUpdate.SetBackgroundColor(Android.Graphics.Color.ParseColor(GeneralSettings.ButtonBackgroundColor));
                     btnUpdate.SetTextColor(Android.Graphics.Color.ParseColor(GeneralSettings.ButtonTextColor));
 
-                   
+
+                    Customer.Communicationchoice[] communicationchoices = customerList.communicationChoices;
+
+                    //CheckBox optInEmail = FindViewById<CheckBox>(Resource.Id.chOptInEmail);
+                    //CheckBox optInSms = FindViewById<CheckBox>(Resource.Id.chOptInSms);
+                    //CheckBox optInPush = FindViewById<CheckBox>(Resource.Id.chOptInPush);
+
+                    //TextView sOptInEmailText = FindViewById<TextView>(Resource.Id.optInEmailText);
+                    //TextView sOptInSmsText = FindViewById<TextView>(Resource.Id.optInSmsText);
+                    //TextView sOptInPushText = FindViewById<TextView>(Resource.Id.optInPushText);
+
+
+                    //foreach (Customer.Communicationchoice cc in communicationchoices)
+                    //{
+                    //    switch (cc.type.code)
+                    //    {
+                    //        case "email":
+                    //            sOptInEmailText.Text = cc.type.name;
+                    //            optInEmail.Checked = cc.choice;
+                    //            break;
+                    //        case "sms":
+                    //            sOptInSmsText.Text = cc.type.name;
+                    //            optInSms.Checked = cc.choice;
+                    //            break;
+                    //        case "push":
+                    //            sOptInPushText.Text = cc.type.name;
+                    //            optInPush.Checked = cc.choice;
+                    //            break;
+                    //    }
+                    //}
+
+
                 }
                 else
                 {
@@ -469,7 +400,6 @@ namespace Joyces.Droid
                         progress.Hide();
                     }
                 }
-                
                 //FindViewById<EditText>(Resource.Id.txtProfileViewMobileNo).Hint = GeneralSettings.TelephoneNoMasking;
             }
             catch (Exception ex)
@@ -482,12 +412,12 @@ namespace Joyces.Droid
         {
             try
             {
-                for(int i = 0; i < 16; i++)
+                for (int i = 0; i < 16; i++)
                 {
                     if (Joyces.Platform.AppContext.Instance.Platform.CustomerList != null)
                         break;
                     Thread.Sleep(500);
-                  //  Thread.sleep(500);
+                    //  Thread.sleep(500);
                 }
                 if (Joyces.Platform.AppContext.Instance.Platform.CustomerList != null)
                 {
@@ -504,7 +434,8 @@ namespace Joyces.Droid
                         progress.Hide();
                     });
                 }
-            }catch(Exception e)
+            }
+            catch (Exception e)
             {
 
             }
@@ -528,12 +459,12 @@ namespace Joyces.Droid
                 CustomListViewMoreAdapter adapter = new CustomListViewMoreAdapter(this, Joyces.Platform.AppContext.Instance.Platform.MoreList, this);
 
                 RunOnUiThread(() =>
-                        {
-                            if (adapter != null)
-                                listViewMore.Adapter = adapter;
+                {
+                    if (adapter != null)
+                        listViewMore.Adapter = adapter;
 
-                            listViewMore.ItemClick += listViewMore_ItemClick;
-                        });
+                    listViewMore.ItemClick += listViewMore_ItemClick;
+                });
 
 
 
@@ -645,34 +576,8 @@ namespace Joyces.Droid
         {
             ImageView imgQRCode = FindViewById<ImageView>(Resource.Id.imageViewQRId);
             imgQRCode.SetImageBitmap(AndroidHelper.GetQrCode(sUserAccountNumber, 300, 300, 0));
-            setCurrentClientTheme();
+
             await RefreshAllData();
-        }
-        private void setCurrentClientTheme()
-        {
-            try
-            {
-                Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
-                TextView txtHeader = FindViewById<TextView>(Resource.Id.textView1);
-                txtHeader.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                txtHeader.Text = Lang.ID_HEADER;
-
-                TextView txtInfo = FindViewById<TextView>(Resource.Id.textView2);
-                txtInfo.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                txtInfo.Text = Lang.ID_DESCRIPTION;
-
-                TextView txtInfoOffer = FindViewById<TextView>(Resource.Id.textView3);
-                txtInfoOffer.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-                txtInfoOffer.Text = Lang.ID_DESCRIPTION_NEWS;
-
-                LinearLayout layoutBackCode = FindViewById<LinearLayout>(Resource.Id.idviewLinearBack);
-                layoutBackCode.SetBackgroundColor(Android.Graphics.Color.ParseColor(GeneralSettings.BackgroundColor));
-
-
-            }
-            catch (Exception ex)
-            {
-            }
         }
 
         async private Task RefreshAllData()
@@ -689,7 +594,7 @@ namespace Joyces.Droid
                     Int32.TryParse(strAccessTokenExp, out iSecondsToExpiration);
                 }
                 await CheckValuesFromSettings();
-                  //Int.TryParse(strAccessTokenExp, out iSecondsToExpiration);
+                //Int.TryParse(strAccessTokenExp, out iSecondsToExpiration);
                 //System.Diagnostics.Debug.WriteLine("================START 1 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                 //Skicka användaren vidare till inloggatläge
                 if (iSecondsToExpiration < 10)
@@ -701,7 +606,7 @@ namespace Joyces.Droid
 
 
                         var getCustomer = await RestAPI.GetCustomer(sUserEmail, sUserToken);
-         //               System.Diagnostics.Debug.WriteLine("================AFTER GET CUSTOMER================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                        //               System.Diagnostics.Debug.WriteLine("================AFTER GET CUSTOMER================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                         if (getCustomer != null && getCustomer is Customer)
                         {
@@ -720,7 +625,7 @@ namespace Joyces.Droid
                             //else
                             //    Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
 
-                            //Joyces.Platform.AppContext.Instance.Platform.MoreList = await RestAPI.GetMore(Helpers.Settings.AccessToken);
+                            //Joyces.Platform.AppContext.Instance.Platform.MoreList = await RestAPI.GetMore(Joyces.Helpers.Settings.AccessToken);
                             GetAllDataForTabs();
 
                         }
@@ -760,7 +665,7 @@ namespace Joyces.Droid
                     GetAllDataForTabs();
                     GetCustomerOwnTaskAndRefreshAccessToken();
                 }
-         //       System.Diagnostics.Debug.WriteLine("================END 1 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //       System.Diagnostics.Debug.WriteLine("================END 1 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 //if (sSelectedTab == "news")
                 //    LoadNewsfeedView();
@@ -788,7 +693,7 @@ namespace Joyces.Droid
                 Task.Run(async () =>
                 {
 
-                var getCustomer = await RestAPI.GetCustomer(sUserEmail, sUserToken);
+                    var getCustomer = await RestAPI.GetCustomer(sUserEmail, sUserToken);
                     //               System.Diagnostics.Debug.WriteLine("================AFTER GET CUSTOMER================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                     if (getCustomer != null && getCustomer is Customer)
@@ -796,42 +701,42 @@ namespace Joyces.Droid
                         Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
                         await SetCustomerSetting();
                     }
-                   
+
 
                 });
                 Task.Run(async () =>
                 {
                     Thread.Sleep(TimeSpan.FromSeconds(15));
-               //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN START================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN START================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bRefreshed = await RestAPI.RefreshTokenInBackground(sUserEmail);
                     string strRefreshed = "";
                     if (bRefreshed)
                         strRefreshed = "true";
                     else
                         strRefreshed = "false";
-               //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
 
                 });
 
                 //HERE REFRESH TOKEN
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
         }
-         private void GetAllDataForTabs()
+        private void GetAllDataForTabs()
         {
             try
             {
-        //        System.Diagnostics.Debug.WriteLine("================START 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //        System.Diagnostics.Debug.WriteLine("================START 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 string sUserToken = Joyces.Helpers.Settings.AccessToken;
                 string sUserEmail = Joyces.Helpers.Settings.UserEmail;
                 Task.Run(async () =>
                 {
-        //            System.Diagnostics.Debug.WriteLine("================OFFERS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //            System.Diagnostics.Debug.WriteLine("================OFFERS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     var resp = await RestAPI.GetOffer(sUserEmail, sUserToken);
                     //            System.Diagnostics.Debug.WriteLine("================OFFERS END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bOfferIsNotTheSame = false;
@@ -864,11 +769,11 @@ namespace Joyces.Droid
                             });
                         }
                     }
-                   
+
                 });
                 Task.Run(async () =>
                 {
-       //             System.Diagnostics.Debug.WriteLine("================NEWS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //             System.Diagnostics.Debug.WriteLine("================NEWS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     var resp2 = await RestAPI.GetNews(sUserEmail, sUserToken);
                     //             System.Diagnostics.Debug.WriteLine("================NEWS END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bNewsIsNotTheSame = false;
@@ -885,16 +790,16 @@ namespace Joyces.Droid
                     }
                     else
                         Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
-                    if(Joyces.Platform.AppContext.Instance.Platform.NewsList != null && bNewsIsNotTheSame)
+                    if (Joyces.Platform.AppContext.Instance.Platform.NewsList != null && bNewsIsNotTheSame)
                     {
                         if (sSelectedTab == "news")
                         {
                             RunOnUiThread(() =>
-                        {
-                            LoadNewsfeedView();
-                        });
+                            {
+                                LoadNewsfeedView();
+                            });
                         }
-                }
+                    }
                 });
                 Task.Run(async () =>
                 {
@@ -913,8 +818,8 @@ namespace Joyces.Droid
                         if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null)
                             await SetMoreSetting();
                     }
-        //            System.Diagnostics.Debug.WriteLine("================MORE END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-                    
+                    //            System.Diagnostics.Debug.WriteLine("================MORE END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+
                     if (sSelectedTab == "more")
                     {
                         if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null && bMoreIsNotTheSame)
@@ -926,7 +831,7 @@ namespace Joyces.Droid
                         }
                     }
                 });
-          //      System.Diagnostics.Debug.WriteLine("================END 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //      System.Diagnostics.Debug.WriteLine("================END 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
             }
             catch (Exception e)
@@ -939,12 +844,12 @@ namespace Joyces.Droid
             try
             {
                 string strMore = Joyces.Helpers.Settings.MoreJson;
-                if (strMore !=null && strMore.Length > 0)
+                if (strMore != null && strMore.Length > 0)
                 {
                     Joyces.Platform.AppContext.Instance.Platform.MoreList = JsonConvert.DeserializeObject<List<More>>(strMore);
                 }
                 string strOffer = Joyces.Helpers.Settings.OfferJson;
-                if(strOffer!=null && strOffer.Length > 0)
+                if (strOffer != null && strOffer.Length > 0)
                 {
                     Joyces.Platform.AppContext.Instance.Platform.OfferList = JsonConvert.DeserializeObject<List<Offer>>(strOffer);
                 }
@@ -959,7 +864,7 @@ namespace Joyces.Droid
                     Joyces.Platform.AppContext.Instance.Platform.CustomerList = JsonConvert.DeserializeObject<Customer>(strCustomer);
                 }
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }

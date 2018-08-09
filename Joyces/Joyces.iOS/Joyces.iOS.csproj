@@ -56,9 +56,9 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer: Mohamed Haidar (PSCT373P9F)</CodesignKey>
+    <CodesignKey>iPhone Developer: Wilhelm Perdahl (4P6J536H5Y)</CodesignKey>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>VS: joyces.joycesupermarket.ie Development</CodesignProvision>
+    <MtouchLink>None</MtouchLink>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>
@@ -85,9 +85,8 @@
     <CodesignEntitlements>
     </CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Developer: Mohamed Haidar (PSCT373P9F)</CodesignKey>
+    <CodesignKey>iPhone Developer: Wilhelm Perdahl (4P6J536H5Y)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>VS: joyces.joycesupermarket.ie Development</CodesignProvision>
     <BuildIpa>false</BuildIpa>
     <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
     <CodesignExtraArgs />
@@ -99,9 +98,6 @@
     </Reference>
     <Reference Include="FFImageLoading.Platform, Version=2.4.3.840, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.FFImageLoading.2.4.3.840\lib\Xamarin.iOS10\FFImageLoading.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Microsoft.AppCenter.1.8.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AppCenter.Analytics, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.8.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
@@ -155,10 +151,14 @@
     <Reference Include="ZXingNetMobile, Version=2.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ZXing.Net.Mobile.2.4.1\lib\Xamarin.iOS10\ZXingNetMobile.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AppCenter, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.8.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Joyces\Joyces.csproj">
       <Name>Joyces</Name>
+      <Project>{9A78311E-F38C-45F3-83D6-DB8C91C102F7}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

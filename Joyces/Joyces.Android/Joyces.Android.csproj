@@ -14,7 +14,7 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AssemblyName>Joyces.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
@@ -28,6 +28,7 @@
     <AndroidSigningStorePass>N:?pM&amp;JhA{7L*Vc:</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>joyces-android-master</AndroidSigningKeyAlias>
     <AndroidSigningKeyPass>N:?pM&amp;JhA{7L*Vc:</AndroidSigningKeyPass>
+    <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -37,15 +38,10 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
     <ConsolePause>false</ConsolePause>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AndroidSupportedAbis />
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-  </PropertyGroup>
+    <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86;x86_64</AndroidSupportedAbis>
+<RunCodeAnalysis>true</RunCodeAnalysis>  <AndroidKeyStore></AndroidKeyStore>
+</PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{D27E6069-63B9-4BE9-9305-7CCD7CAE3C0A}</ProjectGuid>
@@ -58,7 +54,6 @@
     <AndroidApplication>True</AndroidApplication>
     <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.0</TargetFrameworkVersion>
-    <AssemblyName>Joyces.Android</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -66,7 +61,7 @@
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
-    <AndroidKeyStore>true</AndroidKeyStore>
+    <AndroidKeyStore></AndroidKeyStore>
     <AndroidSigningKeyStore>C:\Users\moha\Downloads\joyces-android-master.keystore</AndroidSigningKeyStore>
     <AndroidSigningStorePass>N:?pM&amp;JhA{7L*Vc:</AndroidSigningStorePass>
     <AndroidSigningKeyAlias>joyces-android-master</AndroidSigningKeyAlias>
@@ -78,11 +73,7 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <ConsolePause>false</ConsolePause>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
-    <AndroidLinkMode>Full</AndroidLinkMode>
-  </PropertyGroup>
+<RunCodeAnalysis>true</RunCodeAnalysis>  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Calligraphy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CallygraphyXamarin.2.3.0\lib\MonoAndroid\Calligraphy.dll</HintPath>
@@ -194,6 +185,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Joyces\Joyces.csproj">
       <Name>Joyces</Name>
+      <Project>{9A78311E-F38C-45F3-83D6-DB8C91C102F7}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -398,7 +390,7 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\IconPar.png" />
     <Content Include="_Instr.txt" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>

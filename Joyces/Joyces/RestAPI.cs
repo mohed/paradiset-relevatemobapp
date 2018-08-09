@@ -283,8 +283,6 @@ namespace Joyces
 
         public static async Task<ApplicationTokenModel> GetApplicationToken()
         {
-            try
-            {
                 //var client = new HttpClient();
                 var client = new HttpClient(new NativeMessageHandler());
 
@@ -304,11 +302,6 @@ namespace Joyces
                 var json = await Response.Content.ReadAsStringAsync();
 
                 return JsonConvert.DeserializeObject<ApplicationTokenModel>(json);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
         }
 
         public static async Task<Object> GetUserToken(string sUsername, string sPassword)
@@ -319,6 +312,8 @@ namespace Joyces
                 var client = new HttpClient(new NativeMessageHandler());
 
                 setBasicAuthenticationHttpClient(client, sClientId, sClientSeacret);
+
+                
 
 
                 List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();

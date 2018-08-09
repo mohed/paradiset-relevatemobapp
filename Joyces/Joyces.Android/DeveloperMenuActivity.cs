@@ -46,6 +46,10 @@ namespace Joyces.Droid
         {
             EditText editTextDeveloperMenuStatusWSO2 = FindViewById<EditText>(Resource.Id.editTextDeveloperMenuStatusWSO2);
 
+            TextView editTextDeveloperMenuUrlWSO2 = FindViewById<TextView>(Resource.Id.editTextDeveloperMenuUrlWSO2);
+
+            editTextDeveloperMenuUrlWSO2.Text = Joyces.Platform.AppContext.Instance.Platform.Authorize_uri;
+
             var appTokenModel = await RestAPI.GetApplicationToken();
 
             if (appTokenModel != null)
@@ -64,11 +68,21 @@ namespace Joyces.Droid
         {
             EditText editTextDeveloperMenuStatusREST = FindViewById<EditText>(Resource.Id.editTextDeveloperMenuStatusREST);
 
+            TextView editTextDeveloperMenuUrlRest = FindViewById<TextView>(Resource.Id.editTextDeveloperMenuUrlRest);
+
+            Console.WriteLine("pawpawpawpawpaw" + Joyces.Platform.AppContext.Instance.Platform.WebServiceURL + "pawpapapawapawpawpawpawpaw");
+
+            editTextDeveloperMenuUrlRest.Text = Joyces.Platform.AppContext.Instance.Platform.WebServiceURL;
+
             var tokenModel = await RestAPI.GetUserToken(GeneralSettings.TestUserUsername, GeneralSettings.TestUserPassword);
+
+            Console.WriteLine("***************************** " + tokenModel.ToString() + "++++++++++++++++++++++++");
 
             var getCustomer = await RestAPI.GetCustomer(GeneralSettings.TestUserUsername, ((TokenModel)tokenModel).access_token);
 
-            if (tokenModel != null && getCustomer is Customer)
+            Console.WriteLine("+++++++++++++++++++++++++++++ " + getCustomer.ToString() + "************************");
+
+            if (tokenModel != null && getCustomer != null && getCustomer is Customer)
             {
                 editTextDeveloperMenuStatusREST.Text = "Online";
                 editTextDeveloperMenuStatusREST.SetTextColor(Android.Graphics.Color.DarkGreen);

@@ -223,26 +223,26 @@ namespace Joyces.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070025
-			public const int EmailEditText = 2131165221;
+			// aapt resource value: 0x7f070027
+			public const int EmailEditText = 2131165223;
 			
-			// aapt resource value: 0x7f070029
-			public const int ForgotButton = 2131165225;
+			// aapt resource value: 0x7f07002b
+			public const int ForgotButton = 2131165227;
 			
-			// aapt resource value: 0x7f07002e
-			public const int MoreView = 2131165230;
+			// aapt resource value: 0x7f070030
+			public const int MoreView = 2131165232;
 			
-			// aapt resource value: 0x7f07002f
-			public const int MoreViewList = 2131165231;
+			// aapt resource value: 0x7f070031
+			public const int MoreViewList = 2131165233;
 			
-			// aapt resource value: 0x7f070034
-			public const int OfferSingleView = 2131165236;
-			
-			// aapt resource value: 0x7f070026
-			public const int PasswordEditText = 2131165222;
+			// aapt resource value: 0x7f070036
+			public const int OfferSingleView = 2131165238;
 			
 			// aapt resource value: 0x7f070028
-			public const int RegisterButton = 2131165224;
+			public const int PasswordEditText = 2131165224;
+			
+			// aapt resource value: 0x7f07002a
+			public const int RegisterButton = 2131165226;
 			
 			// aapt resource value: 0x7f070001
 			public const int adjust_height = 2131165185;
@@ -253,35 +253,35 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070007
 			public const int auto = 2131165191;
 			
-			// aapt resource value: 0x7f07001e
-			public const int btnForgotViewSubmit = 2131165214;
+			// aapt resource value: 0x7f070020
+			public const int btnForgotViewSubmit = 2131165216;
 			
-			// aapt resource value: 0x7f070044
-			public const int btnProfileViewLogout = 2131165252;
+			// aapt resource value: 0x7f070046
+			public const int btnProfileViewLogout = 2131165254;
 			
-			// aapt resource value: 0x7f070043
-			public const int btnProfileViewUpdate = 2131165251;
+			// aapt resource value: 0x7f070045
+			public const int btnProfileViewUpdate = 2131165253;
+			
+			// aapt resource value: 0x7f070052
+			public const int btnRegisterViewRegister = 2131165266;
 			
 			// aapt resource value: 0x7f070050
-			public const int btnRegisterViewRegister = 2131165264;
+			public const int buttonRegisterViewPrivacyPolicy = 2131165264;
 			
-			// aapt resource value: 0x7f07004e
-			public const int buttonRegisterViewPrivacyPolicy = 2131165262;
+			// aapt resource value: 0x7f07004f
+			public const int buttonRegisterViewTermAndCondition = 2131165263;
 			
-			// aapt resource value: 0x7f07004d
-			public const int buttonRegisterViewTermAndCondition = 2131165261;
-			
-			// aapt resource value: 0x7f07002a
-			public const int buttonwMainViewVersion = 2131165226;
+			// aapt resource value: 0x7f07002c
+			public const int buttonwMainViewVersion = 2131165228;
 			
 			// aapt resource value: 0x7f070000
 			public const int calligraphy_tag_id = 2131165184;
 			
-			// aapt resource value: 0x7f07004c
-			public const int chbRegisterViewTerms = 2131165260;
+			// aapt resource value: 0x7f07004e
+			public const int chbRegisterViewTerms = 2131165262;
 			
-			// aapt resource value: 0x7f070054
-			public const int contentFrame = 2131165268;
+			// aapt resource value: 0x7f070056
+			public const int contentFrame = 2131165270;
 			
 			// aapt resource value: 0x7f070008
 			public const int dark = 2131165192;
@@ -292,59 +292,65 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070015
 			public const int editTextDeveloperMenuDeviceToken = 2131165205;
 			
-			// aapt resource value: 0x7f07001b
-			public const int editTextDeveloperMenuStatusREST = 2131165211;
+			// aapt resource value: 0x7f07001d
+			public const int editTextDeveloperMenuStatusREST = 2131165213;
+			
+			// aapt resource value: 0x7f07001a
+			public const int editTextDeveloperMenuStatusWSO2 = 2131165210;
+			
+			// aapt resource value: 0x7f07001c
+			public const int editTextDeveloperMenuUrlRest = 2131165212;
 			
 			// aapt resource value: 0x7f070019
-			public const int editTextDeveloperMenuStatusWSO2 = 2131165209;
+			public const int editTextDeveloperMenuUrlWSO2 = 2131165209;
 			
 			// aapt resource value: 0x7f070004
 			public const int icon_only = 2131165188;
 			
-			// aapt resource value: 0x7f070020
-			public const int idviewLinearBack = 2131165216;
+			// aapt resource value: 0x7f070022
+			public const int idviewLinearBack = 2131165218;
 			
-			// aapt resource value: 0x7f07002b
-			public const int imageViewMore = 2131165227;
+			// aapt resource value: 0x7f07002d
+			public const int imageViewMore = 2131165229;
 			
 			// aapt resource value: 0x7f07000a
 			public const int imageViewNews = 2131165194;
 			
-			// aapt resource value: 0x7f070031
-			public const int imageViewNews2 = 2131165233;
+			// aapt resource value: 0x7f070033
+			public const int imageViewNews2 = 2131165235;
 			
-			// aapt resource value: 0x7f07003a
-			public const int imageViewNewsQRCode = 2131165242;
+			// aapt resource value: 0x7f07003c
+			public const int imageViewNewsQRCode = 2131165244;
 			
 			// aapt resource value: 0x7f070011
 			public const int imageViewOffer = 2131165201;
 			
-			// aapt resource value: 0x7f070021
-			public const int imageViewQRId = 2131165217;
+			// aapt resource value: 0x7f070023
+			public const int imageViewQRId = 2131165219;
 			
 			// aapt resource value: 0x7f070009
 			public const int light = 2131165193;
 			
-			// aapt resource value: 0x7f070030
-			public const int listViewNewsfeed = 2131165232;
+			// aapt resource value: 0x7f070032
+			public const int listViewNewsfeed = 2131165234;
 			
-			// aapt resource value: 0x7f070035
-			public const int listViewOffers = 2131165237;
+			// aapt resource value: 0x7f070037
+			public const int listViewOffers = 2131165239;
 			
-			// aapt resource value: 0x7f070027
-			public const int loginButton = 2131165223;
+			// aapt resource value: 0x7f070029
+			public const int loginButton = 2131165225;
 			
-			// aapt resource value: 0x7f07001c
-			public const int mLlayoutBottomButtons = 2131165212;
+			// aapt resource value: 0x7f07001e
+			public const int mLlayoutBottomButtons = 2131165214;
 			
-			// aapt resource value: 0x7f070023
-			public const int mainViewBackground = 2131165219;
+			// aapt resource value: 0x7f070025
+			public const int mainViewBackground = 2131165221;
 			
-			// aapt resource value: 0x7f070024
-			public const int mainViewLogo = 2131165220;
+			// aapt resource value: 0x7f070026
+			public const int mainViewLogo = 2131165222;
 			
-			// aapt resource value: 0x7f070055
-			public const int menu_profile = 2131165269;
+			// aapt resource value: 0x7f070057
+			public const int menu_profile = 2131165271;
 			
 			// aapt resource value: 0x7f070003
 			public const int none = 2131165187;
@@ -358,17 +364,17 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f07000d
 			public const int textView1 = 2131165197;
 			
-			// aapt resource value: 0x7f07001f
-			public const int textView2 = 2131165215;
+			// aapt resource value: 0x7f070021
+			public const int textView2 = 2131165217;
 			
-			// aapt resource value: 0x7f070022
-			public const int textView3 = 2131165218;
+			// aapt resource value: 0x7f070024
+			public const int textView3 = 2131165220;
 			
 			// aapt resource value: 0x7f07000c
 			public const int textViewDescription = 2131165196;
 			
-			// aapt resource value: 0x7f070033
-			public const int textViewDescription2 = 2131165235;
+			// aapt resource value: 0x7f070035
+			public const int textViewDescription2 = 2131165237;
 			
 			// aapt resource value: 0x7f070016
 			public const int textViewDeveloperMenuBundleId = 2131165206;
@@ -379,50 +385,50 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070013
 			public const int textViewDeveloperMenuHeadline = 2131165203;
 			
-			// aapt resource value: 0x7f07001a
-			public const int textViewDeveloperMenuStatusREST = 2131165210;
+			// aapt resource value: 0x7f07001b
+			public const int textViewDeveloperMenuStatusREST = 2131165211;
 			
 			// aapt resource value: 0x7f070018
 			public const int textViewDeveloperMenuStatusWSO2 = 2131165208;
 			
-			// aapt resource value: 0x7f070039
-			public const int textViewDutyText2 = 2131165241;
+			// aapt resource value: 0x7f07003b
+			public const int textViewDutyText2 = 2131165243;
 			
 			// aapt resource value: 0x7f07000b
 			public const int textViewHeadline = 2131165195;
 			
-			// aapt resource value: 0x7f070032
-			public const int textViewHeadline2 = 2131165234;
+			// aapt resource value: 0x7f070034
+			public const int textViewHeadline2 = 2131165236;
 			
-			// aapt resource value: 0x7f07002d
-			public const int textViewMoreDescription = 2131165229;
+			// aapt resource value: 0x7f07002f
+			public const int textViewMoreDescription = 2131165231;
 			
-			// aapt resource value: 0x7f07002c
-			public const int textViewMoreHeadline = 2131165228;
+			// aapt resource value: 0x7f07002e
+			public const int textViewMoreHeadline = 2131165230;
 			
 			// aapt resource value: 0x7f07000f
 			public const int textViewNote = 2131165199;
 			
-			// aapt resource value: 0x7f070037
-			public const int textViewOfferValue2 = 2131165239;
-			
-			// aapt resource value: 0x7f07003b
-			public const int textViewProfileViewEmail = 2131165243;
-			
-			// aapt resource value: 0x7f07003f
-			public const int textViewProfileViewFirstname = 2131165247;
-			
-			// aapt resource value: 0x7f070041
-			public const int textViewProfileViewLastname = 2131165249;
+			// aapt resource value: 0x7f070039
+			public const int textViewOfferValue2 = 2131165241;
 			
 			// aapt resource value: 0x7f07003d
-			public const int textViewProfileViewMobileNo = 2131165245;
+			public const int textViewProfileViewEmail = 2131165245;
 			
-			// aapt resource value: 0x7f07004f
-			public const int textViewRegisterViewGhost1 = 2131165263;
+			// aapt resource value: 0x7f070041
+			public const int textViewProfileViewFirstname = 2131165249;
 			
-			// aapt resource value: 0x7f070038
-			public const int textViewValidDate2 = 2131165240;
+			// aapt resource value: 0x7f070043
+			public const int textViewProfileViewLastname = 2131165251;
+			
+			// aapt resource value: 0x7f07003f
+			public const int textViewProfileViewMobileNo = 2131165247;
+			
+			// aapt resource value: 0x7f070051
+			public const int textViewRegisterViewGhost1 = 2131165265;
+			
+			// aapt resource value: 0x7f07003a
+			public const int textViewValidDate2 = 2131165242;
 			
 			// aapt resource value: 0x7f070010
 			public const int textViewValidDateTime = 2131165200;
@@ -430,53 +436,53 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f07000e
 			public const int textViewValue = 2131165198;
 			
-			// aapt resource value: 0x7f07001d
-			public const int txtForgotViewEmail = 2131165213;
-			
-			// aapt resource value: 0x7f07003c
-			public const int txtProfileViewEmail = 2131165244;
-			
-			// aapt resource value: 0x7f070040
-			public const int txtProfileViewFirstName = 2131165248;
-			
-			// aapt resource value: 0x7f070042
-			public const int txtProfileViewLastName = 2131165250;
+			// aapt resource value: 0x7f07001f
+			public const int txtForgotViewEmail = 2131165215;
 			
 			// aapt resource value: 0x7f07003e
-			public const int txtProfileViewMobileNo = 2131165246;
+			public const int txtProfileViewEmail = 2131165246;
 			
-			// aapt resource value: 0x7f070045
-			public const int txtRegisterViewEmail = 2131165253;
+			// aapt resource value: 0x7f070042
+			public const int txtProfileViewFirstName = 2131165250;
 			
-			// aapt resource value: 0x7f070048
-			public const int txtRegisterViewFirstName = 2131165256;
+			// aapt resource value: 0x7f070044
+			public const int txtProfileViewLastName = 2131165252;
 			
-			// aapt resource value: 0x7f070049
-			public const int txtRegisterViewLastName = 2131165257;
+			// aapt resource value: 0x7f070040
+			public const int txtProfileViewMobileNo = 2131165248;
 			
 			// aapt resource value: 0x7f070047
-			public const int txtRegisterViewMobileNo = 2131165255;
-			
-			// aapt resource value: 0x7f070046
-			public const int txtRegisterViewMobileNoCountry = 2131165254;
+			public const int txtRegisterViewEmail = 2131165255;
 			
 			// aapt resource value: 0x7f07004a
-			public const int txtRegisterViewPassword1 = 2131165258;
+			public const int txtRegisterViewFirstName = 2131165258;
 			
 			// aapt resource value: 0x7f07004b
-			public const int txtRegisterViewPassword2 = 2131165259;
+			public const int txtRegisterViewLastName = 2131165259;
 			
-			// aapt resource value: 0x7f070051
-			public const int txtRegisterViewPersonalNumber = 2131165265;
+			// aapt resource value: 0x7f070049
+			public const int txtRegisterViewMobileNo = 2131165257;
+			
+			// aapt resource value: 0x7f070048
+			public const int txtRegisterViewMobileNoCountry = 2131165256;
+			
+			// aapt resource value: 0x7f07004c
+			public const int txtRegisterViewPassword1 = 2131165260;
+			
+			// aapt resource value: 0x7f07004d
+			public const int txtRegisterViewPassword2 = 2131165261;
 			
 			// aapt resource value: 0x7f070053
-			public const int txtTerms = 2131165267;
+			public const int txtRegisterViewPersonalNumber = 2131165267;
 			
-			// aapt resource value: 0x7f070052
-			public const int txtTermsHeader = 2131165266;
+			// aapt resource value: 0x7f070055
+			public const int txtTerms = 2131165269;
 			
-			// aapt resource value: 0x7f070036
-			public const int viewpager = 2131165238;
+			// aapt resource value: 0x7f070054
+			public const int txtTermsHeader = 2131165268;
+			
+			// aapt resource value: 0x7f070038
+			public const int viewpager = 2131165240;
 			
 			// aapt resource value: 0x7f070006
 			public const int wide = 2131165190;
@@ -494,8 +500,8 @@ namespace Joyces.Droid
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int google_play_services_version = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int google_play_services_version = 2130968576;
 			
 			static Integer()
 			{
@@ -596,71 +602,71 @@ namespace Joyces.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040013
-			public const int ApplicationName = 2130968595;
+			// aapt resource value: 0x7f050012
+			public const int ApplicationName = 2131034130;
 			
-			// aapt resource value: 0x7f040012
-			public const int Hello = 2130968594;
+			// aapt resource value: 0x7f050011
+			public const int Hello = 2131034129;
 			
-			// aapt resource value: 0x7f040015
-			public const int app_name = 2130968597;
+			// aapt resource value: 0x7f050015
+			public const int app_name = 2131034133;
 			
-			// aapt resource value: 0x7f040002
-			public const int common_google_play_services_enable_button = 2130968578;
+			// aapt resource value: 0x7f050001
+			public const int common_google_play_services_enable_button = 2131034113;
 			
-			// aapt resource value: 0x7f040003
-			public const int common_google_play_services_enable_text = 2130968579;
+			// aapt resource value: 0x7f050002
+			public const int common_google_play_services_enable_text = 2131034114;
 			
-			// aapt resource value: 0x7f040004
-			public const int common_google_play_services_enable_title = 2130968580;
+			// aapt resource value: 0x7f050003
+			public const int common_google_play_services_enable_title = 2131034115;
 			
-			// aapt resource value: 0x7f040005
-			public const int common_google_play_services_install_button = 2130968581;
+			// aapt resource value: 0x7f050004
+			public const int common_google_play_services_install_button = 2131034116;
 			
-			// aapt resource value: 0x7f040006
-			public const int common_google_play_services_install_text = 2130968582;
+			// aapt resource value: 0x7f050005
+			public const int common_google_play_services_install_text = 2131034117;
 			
-			// aapt resource value: 0x7f040007
-			public const int common_google_play_services_install_title = 2130968583;
+			// aapt resource value: 0x7f050006
+			public const int common_google_play_services_install_title = 2131034118;
 			
-			// aapt resource value: 0x7f040008
-			public const int common_google_play_services_notification_ticker = 2130968584;
+			// aapt resource value: 0x7f050007
+			public const int common_google_play_services_notification_ticker = 2131034119;
 			
-			// aapt resource value: 0x7f040001
-			public const int common_google_play_services_unknown_issue = 2130968577;
+			// aapt resource value: 0x7f050000
+			public const int common_google_play_services_unknown_issue = 2131034112;
 			
-			// aapt resource value: 0x7f040009
-			public const int common_google_play_services_unsupported_text = 2130968585;
+			// aapt resource value: 0x7f050008
+			public const int common_google_play_services_unsupported_text = 2131034120;
 			
-			// aapt resource value: 0x7f04000a
-			public const int common_google_play_services_update_button = 2130968586;
+			// aapt resource value: 0x7f050009
+			public const int common_google_play_services_update_button = 2131034121;
 			
-			// aapt resource value: 0x7f04000b
-			public const int common_google_play_services_update_text = 2130968587;
+			// aapt resource value: 0x7f05000a
+			public const int common_google_play_services_update_text = 2131034122;
 			
-			// aapt resource value: 0x7f04000c
-			public const int common_google_play_services_update_title = 2130968588;
+			// aapt resource value: 0x7f05000b
+			public const int common_google_play_services_update_title = 2131034123;
 			
-			// aapt resource value: 0x7f04000d
-			public const int common_google_play_services_updating_text = 2130968589;
+			// aapt resource value: 0x7f05000c
+			public const int common_google_play_services_updating_text = 2131034124;
 			
-			// aapt resource value: 0x7f04000e
-			public const int common_google_play_services_wear_update_text = 2130968590;
+			// aapt resource value: 0x7f05000d
+			public const int common_google_play_services_wear_update_text = 2131034125;
 			
-			// aapt resource value: 0x7f04000f
-			public const int common_open_on_phone = 2130968591;
+			// aapt resource value: 0x7f05000e
+			public const int common_open_on_phone = 2131034126;
 			
-			// aapt resource value: 0x7f040010
-			public const int common_signin_button_text = 2130968592;
+			// aapt resource value: 0x7f05000f
+			public const int common_signin_button_text = 2131034127;
 			
-			// aapt resource value: 0x7f040011
-			public const int common_signin_button_text_long = 2130968593;
+			// aapt resource value: 0x7f050010
+			public const int common_signin_button_text_long = 2131034128;
 			
-			// aapt resource value: 0x7f040014
-			public const int hello = 2130968596;
+			// aapt resource value: 0x7f050014
+			public const int hello = 2131034132;
 			
-			// aapt resource value: 0x7f040000
-			public const int library_name = 2130968576;
+			// aapt resource value: 0x7f050013
+			public const int library_name = 2131034131;
 			
 			static String()
 			{

@@ -53,7 +53,7 @@ namespace Joyces.Droid
                 progress.SetMessage(Lang.LOADING);
                 progress.SetCancelable(false);
 
-                //string sUserToken = Helpers.Settings.AccessToken;
+                //string sUserToken = Joyces.Helpers.Settings.AccessToken;
                 string sUserEmail = Joyces.Helpers.Settings.UserEmail;
 
                 //Skicka användaren vidare till inloggatläge
@@ -287,7 +287,7 @@ namespace Joyces.Droid
                 else if (getCustomer is Customer)
                 {
                     //Always set new token here.
-                    //((TokenModel)tokenModel).access_token = Helpers.Settings.AccessToken;
+                    //((TokenModel)tokenModel).access_token = Joyces.Helpers.Settings.AccessToken;
                    // Task.Run(async () => await LoadApp());
 
                     Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
