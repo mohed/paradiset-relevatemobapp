@@ -53,11 +53,11 @@ namespace Joyces.Droid
             progress.SetCancelable(false);
 
             //Kontrollerar ifall kunden är inloggat
-            if (string.IsNullOrEmpty(sCustomerId))
-            {
-                var t = Task.Run(() => goToLogin());
-                t.Wait();
-            }
+            //if (string.IsNullOrEmpty(sCustomerId))
+            //{
+            //    var t = Task.Run(() => goToLogin());
+            //    t.Wait();
+            //}
 
             var t1 = Task.Run(async () => await LoadApp());
             t1.Wait();
