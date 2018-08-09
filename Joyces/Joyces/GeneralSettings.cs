@@ -10,8 +10,8 @@ namespace Joyces
     {
         //TEST USER
         /////////////////////////////////////////////////////////////////////
-        public static String TestUserUsername                   = "ifuser9@grr.la";
-        public static String TestUserPassword                   = "whacko";
+        public static String TestUserUsername = "mohed@hotmail.com";
+        public static String TestUserPassword = "stockholm";
         /////////////////////////////////////////////////////////////////////
 
 
@@ -43,7 +43,7 @@ namespace Joyces
         public static String MainFont = "Montserrat-Regular";
         */
         /////////////////////////////////////////////////////////////////////
-        
+
         //NYTT PARADISET
         //Paradiset -> fixa nytt (joyces.joycesupermarket.ie)
         /////////////////////////////////////////////////////////////////////
@@ -78,6 +78,7 @@ namespace Joyces
 
     public class Lang
     {
+
         //Language
         /////////////////////////////////////////////////////////////////////
         //Joyces
