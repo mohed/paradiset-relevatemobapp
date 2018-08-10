@@ -84,7 +84,7 @@ namespace Joyces.Droid
                 textViewDutyText2.Text = string.Empty;
 
 
-            textViewValidDate2.Text = "Valid until " + ObjectRepository.ParseDateTimeToCulture(obj.validityDate);
+            textViewValidDate2.Text = Lang.VALID_UNTIL + " " + ObjectRepository.ParseDateTimeToCulture(obj.validityDate);
             textViewOfferValue2.Text = ObjectRepository.parseOfferValue(obj);
 
             if (!string.IsNullOrEmpty(obj.code))
