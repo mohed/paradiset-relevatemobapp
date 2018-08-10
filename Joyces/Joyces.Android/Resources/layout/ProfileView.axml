@@ -21,7 +21,7 @@
             android:textStyle="bold"
             android:gravity="center" />
         <TextView
-            android:text="E-mail address"
+            android:text="E-mail adress"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:editable="false"
             android:enabled="false" />
         <TextView
-            android:text="Mobile number"
+            android:text="Mobilnummer"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtProfileViewMobileNo"
-            android:hint="Mobile number"
+            android:hint="Mobilnummer"
             android:textColorHint="#919389"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -80,7 +80,7 @@
             android:maxLength="20"
             android:phoneNumber="true" />
         <TextView
-            android:text="Firstname"
+            android:text="Förnamn"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtProfileViewFirstName"
-            android:hint="Firstname"
+            android:hint="Förnamn"
             android:textColorHint="#919389"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -107,10 +107,10 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="#EEEEEE"
-            android:maxLength="20" 
-            android:editable="false"/>
+            android:maxLength="20"
+            android:editable="false" />
         <TextView
-            android:text="Lastname"
+            android:text="Efternamn"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/txtProfileViewLastName"
-            android:hint="Surname"
+            android:hint="Efternamn"
             android:textColorHint="#919389"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -137,17 +137,17 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:background="#EEEEEE"
-            android:maxLength="20" 
-            android:editable="false"/>
+            android:maxLength="20"
+            android:editable="false" />
         <Button
-            android:text="Update"
+            android:text="Uppdatera"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnProfileViewUpdate"
             android:textColor="#ffffff"
             android:layout_marginTop="20dp" />
         <Button
-            android:text="Logout"
+            android:text="Logga ut"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnProfileViewLogout"
