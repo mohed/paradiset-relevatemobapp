@@ -6,16 +6,15 @@
     android:background="@android:color/white"
     android:gravity="center_horizontal">
     <TextView
-        android:text="Your ID"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView1"
         android:textColor="#000000"
         android:gravity="center"
-        android:paddingTop="50dp" />
+        android:paddingTop="50dp"
+        android:text="Din Kod" />
     <TextView
-        android:text="Scan code at Till"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,7 +22,8 @@
         android:gravity="center"
         android:textColor="#000000"
         android:paddingTop="20dp"
-        android:layout_marginBottom="30dp" />
+        android:layout_marginBottom="30dp"
+        android:text="Skanna din kod vid kassan" />
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
@@ -31,8 +31,7 @@
         android:background="#1d1d1b"
         android:padding="20dp"
         android:gravity="center"
-        android:id="@+id/idviewLinearBack"
-        >
+        android:id="@+id/idviewLinearBack">
         <ImageView
             android:src="@android:drawable/ic_menu_gallery"
             android:layout_width="186.0dp"
@@ -41,7 +40,7 @@
             android:layout_gravity="center" />
     </LinearLayout>
     <TextView
-        android:text="See our latest news and your offers above!"
+        android:text="Se våra senaste nyheter och erbjudanden i menyn ovan!"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
