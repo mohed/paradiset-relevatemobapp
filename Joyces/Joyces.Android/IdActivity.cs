@@ -27,7 +27,7 @@ namespace Joyces.Droid
             // Create your application here
             SetContentView(Resource.Layout.IdView);
 
-           // setCurrentClientTheme();
+            setCurrentClientTheme();
             //var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
 
             ////Toolbar will now take on default actionbar characteristics
@@ -37,31 +37,25 @@ namespace Joyces.Droid
         }
 
 
-        //private void setCurrentClientTheme()
-        //{
-        //    try
-        //    {
-        //        Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
-        //        TextView txtHeader = FindViewById<TextView>(Resource.Id.textView1);
-        //        txtHeader.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-        //        txtHeader.Text = Lang.ID_HEADER;
+        private void setCurrentClientTheme()
+        {
+                Typeface tf = Typeface.CreateFromAsset(Assets, Joyces.Helpers.Settings.MainFont);
+                TextView txtHeader = FindViewById<TextView>(Resource.Id.textView1);
+                txtHeader.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+                txtHeader.Text = Lang.ID_HEADER;
 
-        //        TextView txtInfo = FindViewById<TextView>(Resource.Id.textView2);
-        //        txtInfo.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-        //        txtInfo.Text = Lang.ID_DESCRIPTION;
+                TextView txtInfo = FindViewById<TextView>(Resource.Id.textView2);
+                txtInfo.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+                txtInfo.Text = Lang.ID_DESCRIPTION;
 
-        //        TextView txtInfoOffer = FindViewById<TextView>(Resource.Id.textView3);
-        //        txtInfoOffer.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-        //        txtInfoOffer.Text = Lang.ID_DESCRIPTION_NEWS;
+                TextView txtInfoOffer = FindViewById<TextView>(Resource.Id.textView3);
+                txtInfoOffer.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+                txtInfoOffer.Text = Lang.ID_DESCRIPTION_NEWS;
 
-        //       LinearLayout layoutBackCode = FindViewById<LinearLayout>(Resource.Id.idviewLinearBack);
-        //        layoutBackCode.SetBackgroundColor(Android.Graphics.Color.ParseColor(GeneralSettings.BackgroundColor));
+               LinearLayout layoutBackCode = FindViewById<LinearLayout>(Resource.Id.idviewLinearBack);
+                layoutBackCode.SetBackgroundColor(Android.Graphics.Color.ParseColor(GeneralSettings.BackgroundColor));
 
                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //    }
-        //}
+        }
     }
 }

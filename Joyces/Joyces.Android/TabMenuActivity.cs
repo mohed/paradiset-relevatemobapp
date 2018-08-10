@@ -21,7 +21,7 @@ namespace Joyces.Droid
 {
 
     //[Activity(Label = "Joyces", Theme = "@style/CustomActionBarTheme")]
-    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme")]
+    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme" ,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class TabMenuActivity : Activity
     {
         string sCustomerId = Joyces.Platform.AppContext.Instance.Platform.CustomerId;
@@ -123,7 +123,7 @@ namespace Joyces.Droid
             actionBar.NavigationMode = ActionBarNavigationMode.Tabs;
             actionBar.SetBackgroundDrawable(new ColorDrawable(Android.Graphics.Color.ParseColor(GeneralSettings.AndroidActionBarColor)));
 
-            tab.SetText("News");
+            tab.SetText(Lang.NEWS_HEADER);
             tab.SetIcon(null);
             tab.TabSelected += async (sender, args) =>
             {
@@ -134,7 +134,7 @@ namespace Joyces.Droid
             actionBar.AddTab(tab);
 
             tab = actionBar.NewTab();
-            tab.SetText("ID");
+            tab.SetText(Lang.ID_HEADER); 
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -145,7 +145,7 @@ namespace Joyces.Droid
             actionBar.AddTab(tab);
 
             tab = actionBar.NewTab();
-            tab.SetText("Offers");
+            tab.SetText(Lang.OFFER_HEADER);
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -166,7 +166,7 @@ namespace Joyces.Droid
             actionBar.AddTab(tab);
 
             tab = actionBar.NewTab();
-            tab.SetText("More");
+            tab.SetText(Lang.MORE_HEADER);
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -177,7 +177,7 @@ namespace Joyces.Droid
             actionBar.AddTab(tab);
 
             tab = actionBar.NewTab();
-            tab.SetText("Profile");
+            tab.SetText(Lang.ACCOUNT_MY_ACCOUNT);
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
