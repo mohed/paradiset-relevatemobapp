@@ -140,6 +140,8 @@ namespace Joyces.Droid
             {
                 sSelectedTab = "id";
                 SetContentView(Resource.Layout.IdView);
+                // var intent = new Intent(this, typeof(IdActivity));
+                // StartActivity(intent);
                 LoadIdView();
             };
             actionBar.AddTab(tab);

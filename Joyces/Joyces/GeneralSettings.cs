@@ -174,6 +174,4 @@ namespace Joyces
 
         public static String VALID_UNTIL = "Giltig till";
     }
-
-
 }
