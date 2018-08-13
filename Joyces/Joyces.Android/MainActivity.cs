@@ -56,11 +56,12 @@ namespace Joyces.Droid
                 //string sUserToken = Joyces.Helpers.Settings.AccessToken;
                 string sUserEmail = Joyces.Helpers.Settings.UserEmail;
 
-                //Skicka användaren vidare till inloggatläge
+                
                 if (GeneralSettings.AutoLogin && !string.IsNullOrEmpty(Joyces.Helpers.Settings.AccessToken) && !string.IsNullOrEmpty(sUserEmail))
                 {
                     var t = Task.Run(async () => await LoadApp());
                 }
+                //Skicka användaren vidare till inloggatläge
                 else
                 {
                     ShowLoginView();

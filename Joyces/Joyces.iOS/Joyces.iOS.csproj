@@ -60,11 +60,10 @@
     </CodesignEntitlements>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Mohamed Haidar (PSCT373P9F)</CodesignKey>
     <BuildIpa>true</BuildIpa>
     <MtouchLink>SdkOnly</MtouchLink>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignProvision>VS: se.abalon.paradiset Development</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
   </PropertyGroup>
@@ -106,7 +105,7 @@
     <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
     <CodesignExtraArgs />
     <CodesignResourceRules />
-    <CodesignProvision>VS: joyces.joycesupermarket.ie Development</CodesignProvision>
+    <CodesignProvision>VS: se.abalon.paradiset Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
