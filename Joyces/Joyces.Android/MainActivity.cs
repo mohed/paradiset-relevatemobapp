@@ -22,19 +22,14 @@ namespace Joyces.Droid
     [Activity(Label = "Paradiset", MainLauncher = true, ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class MainActivity : Activity
     {
+        private readonly string tag = "Relapp";
+        private int iSecretButtonClickCounter = 0;
+        private ProgressDialog progress;
         private Button loginButton;
         private Button registerButton;
         private Button forgotButton;
-        private EditText EmailEditText;
-        private EditText PasswordEditText;
-        private Button buttonwMainViewVersion;
-        private string tag = "Relapp"; 
-
-        ProgressDialog progress;
-        Activity activity;
-
-        int iSecretButtonClickCounter = 0;
-
+        private Button mainViewVersionButton;
+                       
         async protected override void OnCreate(Bundle bundle)
         {
             try
@@ -53,15 +48,13 @@ namespace Joyces.Droid
                 progress.SetMessage(Lang.LOADING);
                 progress.SetCancelable(false);
 
-                //string sUserToken = Joyces.Helpers.Settings.AccessToken;
                 string sUserEmail = Joyces.Helpers.Settings.UserEmail;
 
-                
+                //Skicka användaren vidare till inloggatläge
                 if (GeneralSettings.AutoLogin && !string.IsNullOrEmpty(Joyces.Helpers.Settings.AccessToken) && !string.IsNullOrEmpty(sUserEmail))
                 {
                     var t = Task.Run(async () => await LoadApp());
                 }
-                //Skicka användaren vidare till inloggatläge
                 else
                 {
                     ShowLoginView();
@@ -69,9 +62,9 @@ namespace Joyces.Droid
             }
             catch (Exception ex)
             {
-                Log.Warn(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
+                Log.Error(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
                 SetContentView(Resource.Layout.Main);
-                buttonwMainViewVersion.Text = buttonwMainViewVersion.Text + "_err";
+                mainViewVersionButton.Text = mainViewVersionButton.Text + "_err";
                 setCurrentClientTheme();
             }
         }
@@ -148,10 +141,10 @@ namespace Joyces.Droid
             registerButton = FindViewById<Button>(Resource.Id.RegisterButton);
             forgotButton = FindViewById<Button>(Resource.Id.ForgotButton);
 
-            buttonwMainViewVersion = FindViewById<Button>(Resource.Id.buttonwMainViewVersion);
+            mainViewVersionButton = FindViewById<Button>(Resource.Id.buttonwMainViewVersion);
             
             #if DEBUG
-                buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion() + "_dev";
+                mainViewVersionButton.Text = "Version " + AndroidHelper.GetAppVersion() + "_dev";
             #else
                 buttonwMainViewVersion.Text = "Version " + AndroidHelper.GetAppVersion();
             #endif
@@ -222,7 +215,7 @@ namespace Joyces.Droid
             loginButton.Click += LoginButton_Click;
             registerButton.Click += RegisterButton_Click;
             forgotButton.Click += ForgotButton_Click;
-            buttonwMainViewVersion.Click += DeveloperMenu_Click;
+            mainViewVersionButton.Click += DeveloperMenu_Click;
 
         }
 
@@ -426,7 +419,7 @@ namespace Joyces.Droid
             }
             catch (Exception ex)
             {
-                Log.Warn(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
+                Log.Error(tag, "Exception with the following msg was thrown. Msg: " + ex.ToString());
             }
         }
 
