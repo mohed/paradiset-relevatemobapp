@@ -60,7 +60,7 @@ namespace Joyces
     public class RestAPI
     {
         static string sCustomerId = Platform.AppContext.Instance.Platform.CustomerId;
-        static string sURI =  Platform.AppContext.Instance.Platform.WebServiceURL;//"https://testparadiset.abalonrelevate.se/api/";//
+        static string sURI = Platform.AppContext.Instance.Platform.WebServiceURL;//"https://testparadiset.abalonrelevate.se/api/";//
         static string sUsername = Platform.AppContext.Instance.Platform.WebServiceUserName;//"joaxws";// 
         static string sPassword = Platform.AppContext.Instance.Platform.WebServicePassWord;//"Paradisettest1";// 
 
@@ -158,7 +158,7 @@ namespace Joyces
             }
         }
 
-        public static async Task<Object>  RegisterUser(string sEmail, string sFirstName, string sLastName, bool isMainMember, bool bIsMember, string sMobileNo, string sCustomerPassword, string sAppAccessToken)
+        public static async Task<Object> RegisterUser(string sEmail, string sFirstName, string sLastName, bool isMainMember, bool bIsMember, string sMobileNo, string sCustomerPassword, string sAppAccessToken)
         {
             try
             {
@@ -283,25 +283,25 @@ namespace Joyces
 
         public static async Task<ApplicationTokenModel> GetApplicationToken()
         {
-                //var client = new HttpClient();
-                var client = new HttpClient(new NativeMessageHandler());
+            //var client = new HttpClient();
+            var client = new HttpClient(new NativeMessageHandler());
 
-                setBasicAuthenticationHttpClient(client, sClientId, sClientSeacret);
+            setBasicAuthenticationHttpClient(client, sClientId, sClientSeacret);
 
-                List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
+            List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
 
-                list.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
-                list.Add(new KeyValuePair<string, string>("scope", "openid"));
+            list.Add(new KeyValuePair<string, string>("grant_type", "client_credentials"));
+            list.Add(new KeyValuePair<string, string>("scope", "openid"));
 
-                var content = new FormUrlEncodedContent(list);
+            var content = new FormUrlEncodedContent(list);
 
-                var Response = await client.PostAsync(sTokenURI, content);
+            var Response = await client.PostAsync(sTokenURI, content);
 
-                Response.EnsureSuccessStatusCode();
+            Response.EnsureSuccessStatusCode();
 
-                var json = await Response.Content.ReadAsStringAsync();
+            var json = await Response.Content.ReadAsStringAsync();
 
-                return JsonConvert.DeserializeObject<ApplicationTokenModel>(json);
+            return JsonConvert.DeserializeObject<ApplicationTokenModel>(json);
         }
 
         public static async Task<Object> GetUserToken(string sUsername, string sPassword)
@@ -313,7 +313,7 @@ namespace Joyces
 
                 setBasicAuthenticationHttpClient(client, sClientId, sClientSeacret);
 
-                
+
 
 
                 List<KeyValuePair<string, string>> list = new List<KeyValuePair<string, string>>();
@@ -353,7 +353,6 @@ namespace Joyces
                 return null;
             }
         }
-
 
         public static async Task<HttpResponseMessage> PostDeviceInformation(string sAppId, string sAppVersion, string sDeviceOS,
             string sUUID, string sName, string sPlatform, string sToken, string sUserToken, string sCustomerId)
@@ -437,6 +436,7 @@ namespace Joyces
                 return null;
             }
         }
+
         public static async Task<Object> GetOffer(string sEmail, string sUserToken)
         {
             try
@@ -445,18 +445,18 @@ namespace Joyces
                 var client = new HttpClient(new NativeMessageHandler());
 
                 setBearerAuthenticationHttpClient(client, sUserToken);
-             //  System.Diagnostics.Debug.WriteLine("================OFFERS  BEFORE CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //  System.Diagnostics.Debug.WriteLine("================OFFERS  BEFORE CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 var Response = await client.GetAsync(sURI + "customers/" + sEmail + "/offers?ignorePurchaseTerms=true");
-            //    System.Diagnostics.Debug.WriteLine("================OFFERS  AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //    System.Diagnostics.Debug.WriteLine("================OFFERS  AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 var json = await Response.Content.ReadAsStringAsync();
-              //  System.Diagnostics.Debug.WriteLine("================OFFERS  AFTER READ AS STRING ASYNC ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                //  System.Diagnostics.Debug.WriteLine("================OFFERS  AFTER READ AS STRING ASYNC ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 if (Response.IsSuccessStatusCode)
                 {
                     var offer = JsonConvert.DeserializeObject<List<Offer>>(json);
-               //     System.Diagnostics.Debug.WriteLine("================OFFERS  BEFORE RETURN ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    //     System.Diagnostics.Debug.WriteLine("================OFFERS  BEFORE RETURN ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                     return offer.OrderByDescending(o => o.effectiveDate).ToList();
                 }
@@ -504,7 +504,7 @@ namespace Joyces
                 var Response = await client.GetAsync(sURI + "customers/" + sEmail + "/news/");
 
                 var json = await Response.Content.ReadAsStringAsync();
-               // System.Diagnostics.Debug.WriteLine("================  NEWS AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                // System.Diagnostics.Debug.WriteLine("================  NEWS AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 if (Response.IsSuccessStatusCode)
                 {
@@ -550,11 +550,11 @@ namespace Joyces
         {
             try
             {
-               // System.Diagnostics.Debug.WriteLine("================  MORE BFORE CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                // System.Diagnostics.Debug.WriteLine("================  MORE BFORE CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 //var client = new HttpClient();
                 var client = new HttpClient(new NativeMessageHandler());
-                
+
 
                 setBearerAuthenticationHttpClient(client, sUserToken);
 
@@ -569,7 +569,7 @@ namespace Joyces
                     more = _serializer.Deserialize<List<More>>(json);
                 }
                 //more = JsonConvert.DeserializeObject<List<More>>(json);
-               // System.Diagnostics.Debug.WriteLine("================  MORE AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                // System.Diagnostics.Debug.WriteLine("================  MORE AFTER CALL ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                 return more.OrderBy(o => o.lineNumber).ToList();
             }
@@ -665,7 +665,7 @@ namespace Joyces
                 if (response != null && response is TokenModel)
                 {
                     Helpers.Settings.AccessToken = ((TokenModel)response).access_token;
-                     Helpers.Settings.AccessTokenExpiration = ((TokenModel)response).expires_in.ToString();
+                    Helpers.Settings.AccessTokenExpiration = ((TokenModel)response).expires_in.ToString();
                     Helpers.Settings.RefreshToken = ((TokenModel)response).refresh_token;
                     bRefreshed = true;
                     return bRefreshed;
@@ -675,7 +675,7 @@ namespace Joyces
                 else
                     return bRefreshed;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return false;
             }

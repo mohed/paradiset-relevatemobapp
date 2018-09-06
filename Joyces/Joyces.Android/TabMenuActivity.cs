@@ -16,12 +16,13 @@ using System.Threading.Tasks;
 using Joyces.Droid.Model;
 using Android.Graphics.Drawables;
 using System.Threading;
+using Joyces.Droid.Fragments;
 
 namespace Joyces.Droid
 {
 
     //[Activity(Label = "Joyces", Theme = "@style/CustomActionBarTheme")]
-    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme" ,ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(Label = "Paradiset", Theme = "@style/CustomActionBarTheme", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class TabMenuActivity : Activity
     {
         string sCustomerId = Joyces.Platform.AppContext.Instance.Platform.CustomerId;
@@ -29,13 +30,9 @@ namespace Joyces.Droid
         bool bIsUpdating = false;
         ActionBar actionBar;
         ProgressDialog progress;
-
-
         private Button btnUpdate;
         private Button btnLogout;
-
         string sUserAccountNumber;
-
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -48,13 +45,6 @@ namespace Joyces.Droid
             progress.SetProgressStyle(ProgressDialogStyle.Spinner);
             progress.SetMessage(Lang.CONTACTING_SERVER_WAIT);
             progress.SetCancelable(false);
-
-            //Kontrollerar ifall kunden är inloggat
-            //if (string.IsNullOrEmpty(sCustomerId))
-            //{
-            //    var t = Task.Run(() => goToLogin());
-            //    t.Wait();
-            //}
 
             var t1 = Task.Run(async () => await LoadApp());
             t1.Wait();
@@ -115,6 +105,7 @@ namespace Joyces.Droid
         }
 
         string sSelectedTab = string.Empty;
+
         bool mbProfileSelected = false;
 
         private void LoadTabs()
@@ -134,7 +125,7 @@ namespace Joyces.Droid
             actionBar.AddTab(tab);
 
             tab = actionBar.NewTab();
-            tab.SetText(Lang.ID_HEADER); 
+            tab.SetText(Lang.ID_HEADER);
             tab.SetIcon(null);
             tab.TabSelected += (sender, args) =>
             {
@@ -154,14 +145,25 @@ namespace Joyces.Droid
                 if (GeneralSettings.UseLoyaltyCard)
                 {
                     sSelectedTab = "offersWithLoyalty";
-                    SetContentView(Resource.Layout.OffersView);
-                    LoadOffersView();
+                    //SetContentView(Resource.Layout.OffersView);
+                    //LoadOffersView();
+
+                    //Implement using fragment
+                    var trans = FragmentManager.BeginTransaction();
+                    trans.Add(new OffersFragment(), "OffersFragment");
+                    trans.Commit();
                 }
                 else
                 {
                     sSelectedTab = "offersWithoutLoyalty";
-                    SetContentView(Resource.Layout.OfferSingleView);
-                    LoadOffersSingleView();
+                    //SetContentView(Resource.Layout.OfferSingleView);
+                    //LoadOffersSingleView();
+
+                    //Implement using fragment
+                    SetContentView(Resource.Layout.OfferTabView);
+                    var trans = FragmentManager.BeginTransaction();
+                    trans.Add(Resource.Id.offersTabView, new OffersFragment(), "OffersFragment");
+                    trans.Commit();
                 }
 
             };
@@ -305,7 +307,6 @@ namespace Joyces.Droid
             }
             catch (Exception exc)
             {
-
             }
         }
 
@@ -442,6 +443,7 @@ namespace Joyces.Droid
 
             }
         }
+
         private ListView listviewMoreGlobal;
 
         private async void SetMoreListAdapter()
@@ -613,23 +615,7 @@ namespace Joyces.Droid
                         if (getCustomer != null && getCustomer is Customer)
                         {
                             Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
-                            //var resp = await RestAPI.GetOffer(sUserEmail, sUserToken);
-
-                            //if (resp != null && resp is List<Offer>)
-                            //    Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
-                            //else
-                            //    Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
-
-                            //resp = await RestAPI.GetNews(sUserEmail, sUserToken);
-
-                            //if (resp != null && resp is List<News>)
-                            //    Joyces.Platform.AppContext.Instance.Platform.NewsList = (List<News>)resp;
-                            //else
-                            //    Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
-
-                            //Joyces.Platform.AppContext.Instance.Platform.MoreList = await RestAPI.GetMore(Joyces.Helpers.Settings.AccessToken);
                             GetAllDataForTabs();
-
                         }
                         else if (getCustomer != null && getCustomer is AbalonErrors)
                         {
@@ -667,18 +653,6 @@ namespace Joyces.Droid
                     GetAllDataForTabs();
                     GetCustomerOwnTaskAndRefreshAccessToken();
                 }
-                //       System.Diagnostics.Debug.WriteLine("================END 1 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-
-                //if (sSelectedTab == "news")
-                //    LoadNewsfeedView();
-                //else if (sSelectedTab == "offersWithLoyalty")
-                //    LoadOffersView();
-                //else if (sSelectedTab == "offersWithoutLoyalty")
-                //    LoadOffersSingleView();
-                //else if (sSelectedTab == "more")
-                //    LoadMoreFeed();
-
-                //progress.Hide();
             }
             catch (Exception)
             {
@@ -686,48 +660,6 @@ namespace Joyces.Droid
             }
         }
 
-        private void GetCustomerOwnTaskAndRefreshAccessToken()
-        {
-            try
-            {
-                string sUserToken = Joyces.Helpers.Settings.AccessToken;
-                string sUserEmail = Joyces.Helpers.Settings.UserEmail;
-                Task.Run(async () =>
-                {
-
-                    var getCustomer = await RestAPI.GetCustomer(sUserEmail, sUserToken);
-                    //               System.Diagnostics.Debug.WriteLine("================AFTER GET CUSTOMER================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-
-                    if (getCustomer != null && getCustomer is Customer)
-                    {
-                        Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
-                        await SetCustomerSetting();
-                    }
-
-
-                });
-                Task.Run(async () =>
-                {
-                    Thread.Sleep(TimeSpan.FromSeconds(15));
-                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN START================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-                    bool bRefreshed = await RestAPI.RefreshTokenInBackground(sUserEmail);
-                    string strRefreshed = "";
-                    if (bRefreshed)
-                        strRefreshed = "true";
-                    else
-                        strRefreshed = "false";
-                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-
-
-                });
-
-                //HERE REFRESH TOKEN
-            }
-            catch (Exception e)
-            {
-
-            }
-        }
         private void GetAllDataForTabs()
         {
             try
@@ -841,6 +773,50 @@ namespace Joyces.Droid
 
             }
         }
+
+        private void GetCustomerOwnTaskAndRefreshAccessToken()
+        {
+            try
+            {
+                string sUserToken = Joyces.Helpers.Settings.AccessToken;
+                string sUserEmail = Joyces.Helpers.Settings.UserEmail;
+                Task.Run(async () =>
+                {
+
+                    var getCustomer = await RestAPI.GetCustomer(sUserEmail, sUserToken);
+                    //               System.Diagnostics.Debug.WriteLine("================AFTER GET CUSTOMER================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+
+                    if (getCustomer != null && getCustomer is Customer)
+                    {
+                        Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
+                        await SetCustomerSetting();
+                    }
+
+
+                });
+                Task.Run(async () =>
+                {
+                    Thread.Sleep(TimeSpan.FromSeconds(15));
+                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN START================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+                    bool bRefreshed = await RestAPI.RefreshTokenInBackground(sUserEmail);
+                    string strRefreshed = "";
+                    if (bRefreshed)
+                        strRefreshed = "true";
+                    else
+                        strRefreshed = "false";
+                    //     System.Diagnostics.Debug.WriteLine("================REFRESHTOKEN END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+
+
+                });
+
+                //HERE REFRESH TOKEN
+            }
+            catch (Exception e)
+            {
+
+            }
+        }
+
         private async Task CheckValuesFromSettings()
         {
             try
@@ -871,6 +847,7 @@ namespace Joyces.Droid
 
             }
         }
+
         private async Task SetMoreSetting()
         {
             try
@@ -881,6 +858,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
+
         private async Task SetOfferSetting()
         {
             try
@@ -891,6 +869,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
+
         private async Task SetNewsSetting()
         {
             try
@@ -901,6 +880,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
+
         private async Task SetCustomerSetting()
         {
             try
@@ -911,6 +891,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
+
         private async void LoadOffersSingleView()
         {
             try

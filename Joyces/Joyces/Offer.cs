@@ -35,4 +35,11 @@ namespace Joyces
         public string code { get; set; }
         public string name { get; set; }
     }
+
+    public class StampCard : Offer
+    {
+        public int numberOfPunchesTotal { get; set; }
+        public int currentPunch { get; set; }
+        public decimal lastPunchValue { get; set; }
+    }
 }

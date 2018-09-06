@@ -26,12 +26,21 @@ namespace Joyces.Droid
         private Context mContext;
         private TabMenuActivity parentTabView;
 
+        // constructor for development purposes
+        public CustomListViewOffersAdapter(Context context, List<Offer> items) //, TabMenuActivity parent)
+        {
+            mItem = items;
+            mContext = context;
+            //parentTabView = parent;
+        }
+
         public CustomListViewOffersAdapter(Context context, List<Offer> items, TabMenuActivity parent)
         {
             mItem = items;
             mContext = context;
             parentTabView = parent;
         }
+
 
         public override int Count
         {
@@ -61,11 +70,11 @@ namespace Joyces.Droid
             TextView txtValue = row.FindViewById<TextView>(Resource.Id.textViewValue);
             TextView txtValidDateTime = row.FindViewById<TextView>(Resource.Id.textViewValidDateTime);
 
-            Typeface tf = Typeface.CreateFromAsset(parentTabView.Assets, Joyces.Helpers.Settings.MainFont);
-            txtHeadline.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-            txtDescription.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-            txtValue.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
-            txtValidDateTime.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+            //Typeface tf = Typeface.CreateFromAsset(parentTabView.Assets, Joyces.Helpers.Settings.MainFont);
+            //txtHeadline.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+            //txtDescription.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+            //txtValue.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
+            //txtValidDateTime.SetTypeface(tf, Android.Graphics.TypefaceStyle.Normal);
 
 
             if (!string.IsNullOrEmpty(mItem[position].imageUrl))
@@ -90,7 +99,7 @@ namespace Joyces.Droid
             txtValue.Text = ObjectRepository.parseOfferValue(mItem[position]);
             txtValidDateTime.Text = "Valid until " + ObjectRepository.ParseDateTimeToCulture(mItem[position].validityDate);
 
-            parentTabView.DismissProgressbar();
+            //parentTabView.DismissProgressbar();
 
 
             return row;

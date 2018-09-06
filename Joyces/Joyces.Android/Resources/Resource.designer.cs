@@ -235,8 +235,8 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070031
 			public const int MoreViewList = 2131165233;
 			
-			// aapt resource value: 0x7f070036
-			public const int OfferSingleView = 2131165238;
+			// aapt resource value: 0x7f070038
+			public const int OfferSingleView = 2131165240;
 			
 			// aapt resource value: 0x7f070028
 			public const int PasswordEditText = 2131165224;
@@ -256,20 +256,20 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070020
 			public const int btnForgotViewSubmit = 2131165216;
 			
-			// aapt resource value: 0x7f070046
-			public const int btnProfileViewLogout = 2131165254;
+			// aapt resource value: 0x7f070049
+			public const int btnProfileViewLogout = 2131165257;
 			
-			// aapt resource value: 0x7f070045
-			public const int btnProfileViewUpdate = 2131165253;
+			// aapt resource value: 0x7f070048
+			public const int btnProfileViewUpdate = 2131165256;
+			
+			// aapt resource value: 0x7f070055
+			public const int btnRegisterViewRegister = 2131165269;
+			
+			// aapt resource value: 0x7f070053
+			public const int buttonRegisterViewPrivacyPolicy = 2131165267;
 			
 			// aapt resource value: 0x7f070052
-			public const int btnRegisterViewRegister = 2131165266;
-			
-			// aapt resource value: 0x7f070050
-			public const int buttonRegisterViewPrivacyPolicy = 2131165264;
-			
-			// aapt resource value: 0x7f07004f
-			public const int buttonRegisterViewTermAndCondition = 2131165263;
+			public const int buttonRegisterViewTermAndCondition = 2131165266;
 			
 			// aapt resource value: 0x7f07002c
 			public const int buttonwMainViewVersion = 2131165228;
@@ -277,11 +277,11 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070000
 			public const int calligraphy_tag_id = 2131165184;
 			
-			// aapt resource value: 0x7f07004e
-			public const int chbRegisterViewTerms = 2131165262;
+			// aapt resource value: 0x7f070051
+			public const int chbRegisterViewTerms = 2131165265;
 			
-			// aapt resource value: 0x7f070056
-			public const int contentFrame = 2131165270;
+			// aapt resource value: 0x7f070059
+			public const int contentFrame = 2131165273;
 			
 			// aapt resource value: 0x7f070008
 			public const int dark = 2131165192;
@@ -319,8 +319,8 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070033
 			public const int imageViewNews2 = 2131165235;
 			
-			// aapt resource value: 0x7f07003c
-			public const int imageViewNewsQRCode = 2131165244;
+			// aapt resource value: 0x7f07003f
+			public const int imageViewNewsQRCode = 2131165247;
 			
 			// aapt resource value: 0x7f070011
 			public const int imageViewOffer = 2131165201;
@@ -334,8 +334,8 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070032
 			public const int listViewNewsfeed = 2131165234;
 			
-			// aapt resource value: 0x7f070037
-			public const int listViewOffers = 2131165239;
+			// aapt resource value: 0x7f070039
+			public const int listViewOffers = 2131165241;
 			
 			// aapt resource value: 0x7f070029
 			public const int loginButton = 2131165225;
@@ -349,11 +349,20 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070026
 			public const int mainViewLogo = 2131165222;
 			
-			// aapt resource value: 0x7f070057
-			public const int menu_profile = 2131165271;
+			// aapt resource value: 0x7f07005a
+			public const int menu_profile = 2131165274;
 			
 			// aapt resource value: 0x7f070003
 			public const int none = 2131165187;
+			
+			// aapt resource value: 0x7f070036
+			public const int offerRelativeLayout = 2131165238;
+			
+			// aapt resource value: 0x7f070037
+			public const int offersListView = 2131165239;
+			
+			// aapt resource value: 0x7f07003b
+			public const int offersTabView = 2131165243;
 			
 			// aapt resource value: 0x7f070012
 			public const int scrollViewDeveloperMenu = 2131165202;
@@ -391,8 +400,8 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f070018
 			public const int textViewDeveloperMenuStatusWSO2 = 2131165208;
 			
-			// aapt resource value: 0x7f07003b
-			public const int textViewDutyText2 = 2131165243;
+			// aapt resource value: 0x7f07003e
+			public const int textViewDutyText2 = 2131165246;
 			
 			// aapt resource value: 0x7f07000b
 			public const int textViewHeadline = 2131165195;
@@ -409,26 +418,26 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f07000f
 			public const int textViewNote = 2131165199;
 			
-			// aapt resource value: 0x7f070039
-			public const int textViewOfferValue2 = 2131165241;
+			// aapt resource value: 0x7f07003c
+			public const int textViewOfferValue2 = 2131165244;
+			
+			// aapt resource value: 0x7f070040
+			public const int textViewProfileViewEmail = 2131165248;
+			
+			// aapt resource value: 0x7f070044
+			public const int textViewProfileViewFirstname = 2131165252;
+			
+			// aapt resource value: 0x7f070046
+			public const int textViewProfileViewLastname = 2131165254;
+			
+			// aapt resource value: 0x7f070042
+			public const int textViewProfileViewMobileNo = 2131165250;
+			
+			// aapt resource value: 0x7f070054
+			public const int textViewRegisterViewGhost1 = 2131165268;
 			
 			// aapt resource value: 0x7f07003d
-			public const int textViewProfileViewEmail = 2131165245;
-			
-			// aapt resource value: 0x7f070041
-			public const int textViewProfileViewFirstname = 2131165249;
-			
-			// aapt resource value: 0x7f070043
-			public const int textViewProfileViewLastname = 2131165251;
-			
-			// aapt resource value: 0x7f07003f
-			public const int textViewProfileViewMobileNo = 2131165247;
-			
-			// aapt resource value: 0x7f070051
-			public const int textViewRegisterViewGhost1 = 2131165265;
-			
-			// aapt resource value: 0x7f07003a
-			public const int textViewValidDate2 = 2131165242;
+			public const int textViewValidDate2 = 2131165245;
 			
 			// aapt resource value: 0x7f070010
 			public const int textViewValidDateTime = 2131165200;
@@ -439,50 +448,50 @@ namespace Joyces.Droid
 			// aapt resource value: 0x7f07001f
 			public const int txtForgotViewEmail = 2131165215;
 			
-			// aapt resource value: 0x7f07003e
-			public const int txtProfileViewEmail = 2131165246;
+			// aapt resource value: 0x7f070041
+			public const int txtProfileViewEmail = 2131165249;
 			
-			// aapt resource value: 0x7f070042
-			public const int txtProfileViewFirstName = 2131165250;
-			
-			// aapt resource value: 0x7f070044
-			public const int txtProfileViewLastName = 2131165252;
-			
-			// aapt resource value: 0x7f070040
-			public const int txtProfileViewMobileNo = 2131165248;
+			// aapt resource value: 0x7f070045
+			public const int txtProfileViewFirstName = 2131165253;
 			
 			// aapt resource value: 0x7f070047
-			public const int txtRegisterViewEmail = 2131165255;
+			public const int txtProfileViewLastName = 2131165255;
+			
+			// aapt resource value: 0x7f070043
+			public const int txtProfileViewMobileNo = 2131165251;
 			
 			// aapt resource value: 0x7f07004a
-			public const int txtRegisterViewFirstName = 2131165258;
-			
-			// aapt resource value: 0x7f07004b
-			public const int txtRegisterViewLastName = 2131165259;
-			
-			// aapt resource value: 0x7f070049
-			public const int txtRegisterViewMobileNo = 2131165257;
-			
-			// aapt resource value: 0x7f070048
-			public const int txtRegisterViewMobileNoCountry = 2131165256;
-			
-			// aapt resource value: 0x7f07004c
-			public const int txtRegisterViewPassword1 = 2131165260;
+			public const int txtRegisterViewEmail = 2131165258;
 			
 			// aapt resource value: 0x7f07004d
-			public const int txtRegisterViewPassword2 = 2131165261;
+			public const int txtRegisterViewFirstName = 2131165261;
 			
-			// aapt resource value: 0x7f070053
-			public const int txtRegisterViewPersonalNumber = 2131165267;
+			// aapt resource value: 0x7f07004e
+			public const int txtRegisterViewLastName = 2131165262;
 			
-			// aapt resource value: 0x7f070055
-			public const int txtTerms = 2131165269;
+			// aapt resource value: 0x7f07004c
+			public const int txtRegisterViewMobileNo = 2131165260;
 			
-			// aapt resource value: 0x7f070054
-			public const int txtTermsHeader = 2131165268;
+			// aapt resource value: 0x7f07004b
+			public const int txtRegisterViewMobileNoCountry = 2131165259;
 			
-			// aapt resource value: 0x7f070038
-			public const int viewpager = 2131165240;
+			// aapt resource value: 0x7f07004f
+			public const int txtRegisterViewPassword1 = 2131165263;
+			
+			// aapt resource value: 0x7f070050
+			public const int txtRegisterViewPassword2 = 2131165264;
+			
+			// aapt resource value: 0x7f070056
+			public const int txtRegisterViewPersonalNumber = 2131165270;
+			
+			// aapt resource value: 0x7f070058
+			public const int txtTerms = 2131165272;
+			
+			// aapt resource value: 0x7f070057
+			public const int txtTermsHeader = 2131165271;
+			
+			// aapt resource value: 0x7f07003a
+			public const int viewpager = 2131165242;
 			
 			// aapt resource value: 0x7f070006
 			public const int wide = 2131165190;
@@ -550,28 +559,34 @@ namespace Joyces.Droid
 			public const int NewsView = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int OfferSingleView = 2130903051;
+			public const int OffersFragment = 2130903051;
 			
 			// aapt resource value: 0x7f03000c
-			public const int OffersView = 2130903052;
+			public const int OfferSingleView = 2130903052;
 			
 			// aapt resource value: 0x7f03000d
-			public const int OfferView = 2130903053;
+			public const int OffersView = 2130903053;
 			
 			// aapt resource value: 0x7f03000e
-			public const int ProfileView = 2130903054;
+			public const int OfferTabView = 2130903054;
 			
 			// aapt resource value: 0x7f03000f
-			public const int RegisterView = 2130903055;
+			public const int OfferView = 2130903055;
 			
 			// aapt resource value: 0x7f030010
-			public const int RegisterViewParadiset = 2130903056;
+			public const int ProfileView = 2130903056;
 			
 			// aapt resource value: 0x7f030011
-			public const int zxingscanneractivitylayout = 2130903057;
+			public const int RegisterView = 2130903057;
 			
 			// aapt resource value: 0x7f030012
-			public const int zxingscannerfragmentlayout = 2130903058;
+			public const int RegisterViewParadiset = 2130903058;
+			
+			// aapt resource value: 0x7f030013
+			public const int zxingscanneractivitylayout = 2130903059;
+			
+			// aapt resource value: 0x7f030014
+			public const int zxingscannerfragmentlayout = 2130903060;
 			
 			static Layout()
 			{

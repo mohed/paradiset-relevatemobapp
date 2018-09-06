@@ -280,10 +280,6 @@ namespace Joyces.Droid
                 }
                 else if (getCustomer is Customer)
                 {
-                    //Always set new token here.
-                    //((TokenModel)tokenModel).access_token = Joyces.Helpers.Settings.AccessToken;
-                   // Task.Run(async () => await LoadApp());
-
                     Joyces.Platform.AppContext.Instance.Platform.CustomerList = (Customer)getCustomer;
                     if (Joyces.Platform.AppContext.Instance.Platform.CustomerList != null)
                         await SetCustomerSetting();
@@ -409,9 +405,6 @@ namespace Joyces.Droid
         {
             try
             {
-                //var t = Task.Run(async () => await loadValues());
-                //t.Wait();
-
                 var intent = new Intent(this, typeof(TabMenuActivity));
                 DismissProgressbar();
                 StartActivity(intent);
