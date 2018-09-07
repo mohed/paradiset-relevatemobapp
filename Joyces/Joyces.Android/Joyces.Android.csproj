@@ -218,6 +218,7 @@
     <Compile Include="Model\NetworkReachability.cs" />
     <Compile Include="Model\RegistrationIntentService.cs" />
     <Compile Include="Model\AndroidSettings.cs" />
+    <Compile Include="Model\FragmentTreePagerAdapter.cs" />
     <Compile Include="Model\TreePagerAdapter.cs" />
     <Compile Include="MoreActivity.cs" />
     <Compile Include="NewsActivity.cs" />

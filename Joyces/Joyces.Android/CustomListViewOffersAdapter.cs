@@ -41,7 +41,6 @@ namespace Joyces.Droid
             parentTabView = parent;
         }
 
-
         public override int Count
         {
             get { return mItem.Count; }

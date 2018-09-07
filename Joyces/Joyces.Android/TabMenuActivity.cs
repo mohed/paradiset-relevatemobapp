@@ -55,6 +55,17 @@ namespace Joyces.Droid
                 SendRegistrationToAppServer(sDeviceToken);
         }
 
+        private async Task LoadApp()
+        {
+            try
+            {
+                LoadTabs();
+            }
+            catch (Exception exc)
+            {
+            }
+        }
+
         async public void SendRegistrationToAppServer(string sDeviceToken)
         {
             //Skicka en token tillsammans uniqe UUID till Relevate
@@ -131,9 +142,7 @@ namespace Joyces.Droid
             {
                 sSelectedTab = "id";
                 SetContentView(Resource.Layout.IdView);
-                // var intent = new Intent(this, typeof(IdActivity));
-                // StartActivity(intent);
-                LoadIdView();
+               LoadIdView();
             };
             actionBar.AddTab(tab);
 
@@ -149,8 +158,9 @@ namespace Joyces.Droid
                     //LoadOffersView();
 
                     //Implement using fragment
+                    SetContentView(Resource.Layout.OfferTabView);
                     var trans = FragmentManager.BeginTransaction();
-                    trans.Add(new OffersFragment(), "OffersFragment");
+                    trans.Add(Resource.Id.offersTabView, new OffersFragment(), "OffersFragment");
                     trans.Commit();
                 }
                 else
@@ -165,7 +175,6 @@ namespace Joyces.Droid
                     trans.Add(Resource.Id.offersTabView, new OffersFragment(), "OffersFragment");
                     trans.Commit();
                 }
-
             };
             actionBar.AddTab(tab);
 
@@ -297,17 +306,6 @@ namespace Joyces.Droid
         private void goToLogin()
         {
             SetContentView(Resource.Layout.Main);
-        }
-
-        private async Task LoadApp()
-        {
-            try
-            {
-                LoadTabs();
-            }
-            catch (Exception exc)
-            {
-            }
         }
 
         private async Task LoadAllFeeds()
@@ -662,116 +660,125 @@ namespace Joyces.Droid
 
         private void GetAllDataForTabs()
         {
-            try
-            {
-                //        System.Diagnostics.Debug.WriteLine("================START 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
+            //        System.Diagnostics.Debug.WriteLine("================START 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
-                string sUserToken = Joyces.Helpers.Settings.AccessToken;
-                string sUserEmail = Joyces.Helpers.Settings.UserEmail;
-                Task.Run(async () =>
-                {
+            string sUserToken = Joyces.Helpers.Settings.AccessToken;
+            string sUserEmail = Joyces.Helpers.Settings.UserEmail;
+
+            // Get Offer
+            Task.Run(async () =>
+            {
                     //            System.Diagnostics.Debug.WriteLine("================OFFERS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     var resp = await RestAPI.GetOffer(sUserEmail, sUserToken);
                     //            System.Diagnostics.Debug.WriteLine("================OFFERS END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bOfferIsNotTheSame = false;
-                    if (resp != null && resp is List<Offer>)
-                    {
-                        string strJsonFromRest = JsonConvert.SerializeObject((List<Offer>)resp);
-                        if (strJsonFromRest != Joyces.Helpers.Settings.OfferJson)
-                        {
-                            Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
-                            bOfferIsNotTheSame = true;
-                        }
-                        await SetOfferSetting();
-                    }
-                    else
-                        Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
-                    if (Joyces.Platform.AppContext.Instance.Platform.OfferList != null && bOfferIsNotTheSame)
-                    {
-                        if (sSelectedTab == "offersWithLoyalty")
-                        {
-                            RunOnUiThread(() =>
-                            {
-                                LoadOffersView();
-                            });
-                        }
-                        else if (sSelectedTab == "offersWithoutLoyalty")
-                        {
-                            RunOnUiThread(() =>
-                            {
-                                LoadOffersSingleView();
-                            });
-                        }
-                    }
-
-                });
-                Task.Run(async () =>
+                if (resp != null && resp is List<Offer>)
                 {
+                    string strJsonFromRest = JsonConvert.SerializeObject((List<Offer>)resp);
+                    if (strJsonFromRest != Joyces.Helpers.Settings.OfferJson)
+                    {
+                        Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
+                        bOfferIsNotTheSame = true;
+                    }
+                        // await SetOfferSetting();
+                    }
+                else
+                    Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
+                if (Joyces.Platform.AppContext.Instance.Platform.OfferList != null && bOfferIsNotTheSame)
+                {
+                    if (sSelectedTab == "offersWithLoyalty")
+                    {
+                        RunOnUiThread(() =>
+                        {
+                                //LoadOffersView();
+
+                                SetContentView(Resource.Layout.OfferTabView);
+                            var trans = FragmentManager.BeginTransaction();
+                            trans.Add(Resource.Id.offersTabView, new OffersFragment(), "OffersFragment");
+                            trans.Commit();
+                        });
+                    }
+                    else if (sSelectedTab == "offersWithoutLoyalty")
+                    {
+                        RunOnUiThread(() =>
+                        {
+                                // LoadOffersSingleView();
+
+                                SetContentView(Resource.Layout.OfferTabView);
+                            var trans = FragmentManager.BeginTransaction();
+                            trans.Add(Resource.Id.offersTabView, new OffersFragment(), "OffersFragment");
+                            trans.Commit();
+                        });
+                    }
+                }
+
+            });
+            
+
+            // Get news
+            Task.Run(async () =>
+            {
                     //             System.Diagnostics.Debug.WriteLine("================NEWS START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     var resp2 = await RestAPI.GetNews(sUserEmail, sUserToken);
                     //             System.Diagnostics.Debug.WriteLine("================NEWS END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bNewsIsNotTheSame = false;
-                    if (resp2 != null && resp2 is List<News>)
-                    {
-                        string strJsonFromRest = JsonConvert.SerializeObject((List<News>)resp2);
-
-                        if (strJsonFromRest != Joyces.Helpers.Settings.NewsJson)
-                        {
-                            Joyces.Platform.AppContext.Instance.Platform.NewsList = (List<News>)resp2;
-                            bNewsIsNotTheSame = true;
-                        }
-                        await SetNewsSetting();
-                    }
-                    else
-                        Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
-                    if (Joyces.Platform.AppContext.Instance.Platform.NewsList != null && bNewsIsNotTheSame)
-                    {
-                        if (sSelectedTab == "news")
-                        {
-                            RunOnUiThread(() =>
-                            {
-                                LoadNewsfeedView();
-                            });
-                        }
-                    }
-                });
-                Task.Run(async () =>
+                if (resp2 != null && resp2 is List<News>)
                 {
+                    string strJsonFromRest = JsonConvert.SerializeObject((List<News>)resp2);
+
+                    if (strJsonFromRest != Joyces.Helpers.Settings.NewsJson)
+                    {
+                        Joyces.Platform.AppContext.Instance.Platform.NewsList = (List<News>)resp2;
+                        bNewsIsNotTheSame = true;
+                    }
+                    await SetNewsSetting();
+                }
+                else
+                    Joyces.Platform.AppContext.Instance.Platform.NewsList = null;
+                if (Joyces.Platform.AppContext.Instance.Platform.NewsList != null && bNewsIsNotTheSame)
+                {
+                    if (sSelectedTab == "news")
+                    {
+                        RunOnUiThread(() =>
+                        {
+                            LoadNewsfeedView();
+                        });
+                    }
+                }
+            });
+
+            // Get more
+            Task.Run(async () =>
+            {
                     //              System.Diagnostics.Debug.WriteLine("================MORE START ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
                     bool bMoreIsNotTheSame = false;
-                    var resp = await RestAPI.GetMore(Joyces.Helpers.Settings.AccessToken);
-                    if (resp != null && resp is List<More>)
-                    {
-                        string strJsonFromRest = JsonConvert.SerializeObject((List<More>)resp);
+                var resp = await RestAPI.GetMore(Joyces.Helpers.Settings.AccessToken);
+                if (resp != null && resp is List<More>)
+                {
+                    string strJsonFromRest = JsonConvert.SerializeObject((List<More>)resp);
 
-                        if (strJsonFromRest != Joyces.Helpers.Settings.MoreJson)
-                        {
-                            Joyces.Platform.AppContext.Instance.Platform.MoreList = (List<More>)resp;
-                            bMoreIsNotTheSame = true;
-                        }
-                        if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null)
-                            await SetMoreSetting();
+                    if (strJsonFromRest != Joyces.Helpers.Settings.MoreJson)
+                    {
+                        Joyces.Platform.AppContext.Instance.Platform.MoreList = (List<More>)resp;
+                        bMoreIsNotTheSame = true;
                     }
+                    if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null)
+                        await SetMoreSetting();
+                }
                     //            System.Diagnostics.Debug.WriteLine("================MORE END ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
 
                     if (sSelectedTab == "more")
+                {
+                    if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null && bMoreIsNotTheSame)
                     {
-                        if (Joyces.Platform.AppContext.Instance.Platform.MoreList != null && bMoreIsNotTheSame)
+                        RunOnUiThread(() =>
                         {
-                            RunOnUiThread(() =>
-                            {
-                                LoadMoreFeed();
-                            });
-                        }
+                            LoadMoreFeed();
+                        });
                     }
-                });
-                //      System.Diagnostics.Debug.WriteLine("================END 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff"));
-
-            }
-            catch (Exception e)
-            {
-
-            }
+                }
+            });
+            //      System.Diagnostics.Debug.WriteLine("================END 2 ================ " + DateTime.Now.ToString("HH:mm:ss.fff
         }
 
         private void GetCustomerOwnTaskAndRefreshAccessToken()
@@ -826,11 +833,13 @@ namespace Joyces.Droid
                 {
                     Joyces.Platform.AppContext.Instance.Platform.MoreList = JsonConvert.DeserializeObject<List<More>>(strMore);
                 }
+                /*
                 string strOffer = Joyces.Helpers.Settings.OfferJson;
                 if (strOffer != null && strOffer.Length > 0)
                 {
                     Joyces.Platform.AppContext.Instance.Platform.OfferList = JsonConvert.DeserializeObject<List<Offer>>(strOffer);
                 }
+                */
                 string strNews = Joyces.Helpers.Settings.NewsJson;
                 if (strNews != null && strNews.Length > 0)
                 {
@@ -859,7 +868,7 @@ namespace Joyces.Droid
             catch (Exception e) { }
         }
 
-        private async Task SetOfferSetting()
+        /*private async Task SetOfferSetting()
         {
             try
             {
@@ -869,6 +878,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
+        */
 
         private async Task SetNewsSetting()
         {
@@ -891,75 +901,7 @@ namespace Joyces.Droid
             }
             catch (Exception e) { }
         }
-
-        private async void LoadOffersSingleView()
-        {
-            try
-            {
-                var OfferList = Joyces.Platform.AppContext.Instance.Platform.OfferList;
-
-
-
-                if (OfferList != null)
-                {
-                    CustomListViewOffersAdapter adapter = new CustomListViewOffersAdapter(this, Joyces.Platform.AppContext.Instance.Platform.OfferList, this);
-
-                    ListView listViewOffers = FindViewById<ListView>(Resource.Id.listViewOffers);
-
-                    RunOnUiThread(() =>
-                    {
-                        if (adapter != null)
-                            listViewOffers.Adapter = adapter;
-
-                        listViewOffers.ItemClick += ListViewOffers_ItemClick;
-                    });
-                }
-                else
-                {
-                    progress.Show();
-                    //Alert(Lang.MESSAGE_HEADLINE, Lang.SERVICE_NOT_AVAILABLE, Lang.BUTTON_OK, "Try again", "offers");
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
-
-        private async void LoadOffersView()
-        {
-            var OfferList = Joyces.Platform.AppContext.Instance.Platform.OfferList;
-
-            if (OfferList != null)
-            {
-                ViewPager viewPager = FindViewById<ViewPager>(Resource.Id.viewpager);
-
-                TreeCatalog treeCatalog = new TreeCatalog();
-                viewPager.Adapter = new TreePagerAdapter(this, treeCatalog, OfferList, this);
-            }
-            else
-            {
-                progress.Show();
-                //Alert(Lang.MESSAGE_HEADLINE, Lang.SERVICE_NOT_AVAILABLE, Lang.BUTTON_OK);
-            }
-        }
-
-        private void ListViewOffers_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            var singleNewsItem = Joyces.Platform.AppContext.Instance.Platform.OfferList[e.Position];
-
-            if (singleNewsItem != null)
-            {
-                var intent = new Intent(this, typeof(OfferActivity));
-                intent.PutExtra("OfferActivity", JsonConvert.SerializeObject(singleNewsItem));
-                StartActivity(intent);
-            }
-            else
-            {
-                Alert(Lang.MESSAGE_HEADLINE, Lang.SERVICE_NOT_AVAILABLE, Lang.BUTTON_OK);
-            }
-        }
-
+        
         private void Alert(string sHeadline, string sMessage, string sButtonText)
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -995,12 +937,12 @@ namespace Joyces.Droid
                     if (GeneralSettings.UseLoyaltyCard)
                     {
                         SetContentView(Resource.Layout.OffersView);
-                        LoadOffersView();
+                        //LoadOffersView();
                     }
                     else
                     {
                         SetContentView(Resource.Layout.OfferSingleView);
-                        LoadOffersSingleView();
+                        //LoadOffersSingleView();
                     }
                 }
                 else if (sReloadTab == "news")

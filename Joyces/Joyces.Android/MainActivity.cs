@@ -284,17 +284,10 @@ namespace Joyces.Droid
                     if (Joyces.Platform.AppContext.Instance.Platform.CustomerList != null)
                         await SetCustomerSetting();
 
-                    var resp = await RestAPI.GetOffer(sUsername, Joyces.Helpers.Settings.AccessToken);
+                    // Removed GetOffer to the offer fragment. 
+                    // TODO Remove rest of data calls to separet fragments
 
-                    if (resp != null && resp is List<Offer>)
-                    {
-                        Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
-                        await SetOfferSetting();
-                    }
-                    else
-                        Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
-
-                    resp = await RestAPI.GetNews(sUsername, Joyces.Helpers.Settings.AccessToken);
+                    var resp = await RestAPI.GetNews(sUsername, Joyces.Helpers.Settings.AccessToken);
 
                     if (resp != null && resp is List<News>)
                     {
@@ -368,7 +361,8 @@ namespace Joyces.Droid
             }
         }
 
-        private async Task SetOfferSetting()
+        /*
+        private void SetOfferSetting()
         {
             try
             {
@@ -377,7 +371,8 @@ namespace Joyces.Droid
                 Joyces.Helpers.Settings.OfferJson = strOfferAsJson;
             }
             catch (Exception e) { }
-        }
+        } 
+        */
 
         private async Task SetNewsSetting()
         {
