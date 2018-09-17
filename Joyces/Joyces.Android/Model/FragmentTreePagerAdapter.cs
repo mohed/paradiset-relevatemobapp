@@ -40,7 +40,6 @@ namespace FragmentTreePager
             return view == obj;
         }
 
-
         public override Java.Lang.Object InstantiateItem(View container, int position)
         {
             var viewPager = container.JavaCast<ViewPager>();

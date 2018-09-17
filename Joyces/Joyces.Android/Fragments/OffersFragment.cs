@@ -11,8 +11,10 @@ using Android.Support.V4.View;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using FragmentTreePager;
+
 using Newtonsoft.Json;
+
+using FragmentTreePager;
 using TreePager;
 
 namespace Joyces.Droid.Fragments
@@ -49,18 +51,16 @@ namespace Joyces.Droid.Fragments
             return view;
         }
 
+        // Does not seem to be called anymore
         private async void LoadOffersSingleView()
         {
             try
             {
                 var OfferList = Joyces.Platform.AppContext.Instance.Platform.OfferList;
 
-
-
                 if (OfferList != null)
                 {
                     CustomListViewOffersAdapter adapter = new CustomListViewOffersAdapter(view.Context, Joyces.Platform.AppContext.Instance.Platform.OfferList);
-
                     ListView listViewOffers = view.FindViewById<ListView>(Resource.Id.listViewOffers);
 
                     if (adapter != null)
@@ -79,6 +79,7 @@ namespace Joyces.Droid.Fragments
             }
         }
 
+        // Does not seem to be called anymore
         private async void LoadOffersView()
         {
             var OfferList = Joyces.Platform.AppContext.Instance.Platform.OfferList;
@@ -119,7 +120,7 @@ namespace Joyces.Droid.Fragments
             ad.SetTitle(sHeadline);
             ad.SetIcon(Android.Resource.Drawable.IcDialogAlert);
             ad.SetMessage(sMessage);
-            ad.SetButton(sButtonText, (s, e) => { Console.WriteLine("OK Button clicked, alert dismissed"); })
+            ad.SetButton(sButtonText, (s, e) => { Console.WriteLine("OK Button clicked, alert dismissed"); });
             ad.Show();
         }
     }

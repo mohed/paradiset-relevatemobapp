@@ -78,16 +78,4 @@
             android:src="@drawable/Placeholder"
             android:layout_gravity="right" />
     </LinearLayout>
-    <!--<View
-        android:layout_width="fill_parent"
-        android:layout_height="10dp"
-        android:background="#ffffff" />
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="1dp"
-        android:background="#cccccc" />
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="10dp"
-        android:background="#ffffff" />-->
 </LinearLayout>

@@ -67,6 +67,7 @@ namespace Joyces
         public static String NavigationTint = "#009f4d";    // Ikon outline för navigation
         public static String TabBarTint = "#009f4d";//"#5daa30";    // iOS: Ikon outline för tabbar
         public static String AndroidActionBarColor = "#009f4d";//"#e2f2e2";//"#009f4d";//"#5daa30";    // Android: ActionBar färg
+        public static String PunchCardWidgetColor = "#50B050"; 
         public static bool AutoLogin = true;
         public static bool UseLoyaltyCard = false;
         public static String TelephoneNoMasking = "46";

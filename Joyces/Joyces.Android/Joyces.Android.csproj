@@ -231,6 +231,7 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TabMenuActivity.cs" />
+    <Compile Include="Views\PunchCardProgressView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -406,6 +407,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\OfferTabView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\CustomListViewRowPunchCard.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="_Instr.txt" />
