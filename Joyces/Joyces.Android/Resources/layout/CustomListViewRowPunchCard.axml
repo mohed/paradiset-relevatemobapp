@@ -11,31 +11,28 @@
 		android:paddingLeft="18dp"
 		android:layout_weight="3">
 		<TextView
-			android:text="Headline for stamp cards"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:id="@+id/textViewHeadline"
-			android:textSize="17dp"
-			android:textColor="#000000"
-			android:layout_gravity="left"
-			android:lines="1"
-			android:singleLine="true" />
-		<Joyces.Droid.Views.PunchCardProgressView
-			android:id="@+id/punchCardProgressView"
-			android:layout_width="wrap_content"
-			android:layout_height="20dp"
-			android:layout_gravity="left" />
-		<TextView
 			android:id="@+id/textViewName"
 			android:text="5 SEK each"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:paddingBottom="5dp"
-			android:textSize="12dp"
-			android:textColor="#306c39"
+			android:textSize="17dp"
 			android:textStyle="bold"
+			android:textColor="#000000"
+			android:layout_gravity="left" />
+		<Joyces.Droid.Views.PunchCardProgressView
+			android:id="@+id/punchCardProgressView"
+			android:layout_width="wrap_content"
+			android:layout_height="25dp"
+			android:layout_gravity="left" />
+		<TextView
+			android:id="@+id/textViewValue"
+			android:text="100%"
+			android:textAppearance="?android:attr/textAppearanceLarge"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textSize="17dp"
+			android:textColor="#306c39"
 			android:layout_gravity="left" />
 		</LinearLayout>
 

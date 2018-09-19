@@ -868,18 +868,6 @@ namespace Joyces.Droid
             catch (Exception e) { }
         }
 
-        /*private async Task SetOfferSetting()
-        {
-            try
-            {
-                List<Offer> offerList = Joyces.Platform.AppContext.Instance.Platform.OfferList;
-                string strOfferAsJson = JsonConvert.SerializeObject(offerList);
-                Joyces.Helpers.Settings.OfferJson = strOfferAsJson;
-            }
-            catch (Exception e) { }
-        }
-        */
-
         private async Task SetNewsSetting()
         {
             try

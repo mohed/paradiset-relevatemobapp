@@ -36,7 +36,7 @@ namespace Joyces
         public string name { get; set; }
     }
 
-    public class StampCard : Offer
+    public class PunchCard : Offer
     {
         public int numberOfPunchesTotal { get; set; }
         public int currentPunch { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 using Android.App;
 using Android.Content;
@@ -16,13 +17,14 @@ using Newtonsoft.Json;
 
 using FragmentTreePager;
 using TreePager;
+using Joyces.Droid.Helpers;
 
 namespace Joyces.Droid.Fragments
 {
     public class OffersFragment : Fragment
     {
         private string tag = "Relapp";
-        View view;
+        private View view;
         private String sSelectedTab = string.Empty;
 
         async public override void OnCreate(Bundle savedInstanceState)
@@ -30,8 +32,13 @@ namespace Joyces.Droid.Fragments
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
-            var resp = await RestAPI.GetOffer(Joyces.Helpers.Settings.UserEmail, Joyces.Helpers.Settings.AccessToken);
+            RefreshHelper.OnPrint();
+            GetOffers().Wait();
+        }
 
+        async private Task GetOffers()
+        {
+            var resp = await RestAPI.GetOffer(Joyces.Helpers.Settings.UserEmail, Joyces.Helpers.Settings.AccessToken);
             if (resp != null && resp is List<Offer>)
             {
                 Joyces.Platform.AppContext.Instance.Platform.OfferList = (List<Offer>)resp;
@@ -39,6 +46,7 @@ namespace Joyces.Droid.Fragments
             else
             {
                 Joyces.Platform.AppContext.Instance.Platform.OfferList = null;
+                // TODO: follow this and handle null offerlists
             }
         }
 
@@ -48,6 +56,7 @@ namespace Joyces.Droid.Fragments
             ListView offerListView = view.FindViewById<ListView>(Resource.Id.offersListView);
             CustomListViewOffersAdapter adapter = new CustomListViewOffersAdapter(container.Context, Joyces.Platform.AppContext.Instance.Platform.OfferList);
             offerListView.Adapter = adapter;
+            offerListView.ItemClick += ListViewOffers_ItemClick;
             return view;
         }
 

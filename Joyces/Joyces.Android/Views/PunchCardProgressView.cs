@@ -16,10 +16,11 @@ namespace Joyces.Droid.Views
 {
     public class PunchCardProgressView : View
     {
-        private int radius = 20;
+        private int radius = 25;
         private int margin = 5;
         private Context mContext;
-        private int NUM_CIRCLES = 5;
+        public int numberOfPunchesTotal { get; set; } = 5;
+        public int currentPunch { get; set; } = 3;
 
         public PunchCardProgressView(Context context, IAttributeSet attrs) :
             base(context, attrs)
@@ -44,44 +45,17 @@ namespace Joyces.Droid.Views
             int spacing = 2 * radius + margin;
             int shift = radius;
 
-            Paint debugLayout = new Paint();
-            debugLayout.Color = Color.LightGray;
-            canvas.DrawPaint(debugLayout);
-
-            
-
-            
-            paintPunchedSlots(spacing, shift, canvas, 3);
-            paintUnPuncedSlot(spacing, 3*shift, canvas, 2);
-            // x and y needs to be obtaind from parrent view dynamicaly
-
-            /*
-            Paint paint = new Paint();
-            paint.SetStyle(Paint.Style.FillAndStroke);
-            paint.Color = Color.White;
-            canvas.DrawPaint(paint);
-            paint.Color = Color.ParseColor("#da4747");
-            canvas.DrawCircle(x, y, radius, paint);
-            */
-        }
-
-        private void paintPunchedSlots(int spacing, int shift, Canvas canvas, int num)
-        {
             var paintCircle = new Paint() { Color = Color.ParseColor(GeneralSettings.PunchCardWidgetColor) };
-            for (int i = 0; i < num; i++)
-            {
-                int x = i * spacing + shift;
-                int y = radius;
-                canvas.DrawCircle(x, y, radius, paintCircle);
-            }
+            drawCircles(spacing, shift, canvas, paintCircle, 0, currentPunch);
+
+            paintCircle.SetStyle(Paint.Style.Stroke);
+            drawCircles(spacing, shift, canvas, paintCircle, currentPunch, numberOfPunchesTotal);
+           
         }
 
-        private void paintUnPuncedSlot(int spacing, int shift, Canvas canvas, int num)
-        {
-            var paintCircle = new Paint()
-            { Color = Color.ParseColor(GeneralSettings.PunchCardWidgetColor) };
-            paintCircle.SetStyle(Paint.Style.Stroke);
-            for (int i = 0; i < NUM_CIRCLES; i++)
+        private void drawCircles(int spacing, int shift, Canvas canvas, Paint paintCircle, int start, int end)
+        {   
+            for (int i = start; i < end; i++)
             {
                 int x = i * spacing + shift;
                 int y = radius;
